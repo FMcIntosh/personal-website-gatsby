@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import Project from '../components/Project';
+import styled from 'styled-components';
+
+const ProjectSection = styled.div`
+  display: flex;
+`;
 
 export default class IndexPage extends React.Component {
   render() {
@@ -17,9 +22,11 @@ export default class IndexPage extends React.Component {
             <div className="content">
               <h1 className="has-text-weight-bold is-size-2">Latest Projects</h1>
             </div>
-            {projects.map(({ node: post }) => (
-              <Project key={post.id} post={post} />
-            ))}
+            <ProjectSection>
+              {projects.map(({ node: post }) => (
+                <Project key={post.id} post={post} />
+              ))}
+            </ProjectSection>
           </div>
         </section>
 
@@ -83,6 +90,13 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            image {
+              childImageSharp {
+                fluid(maxWidth: 526, quality: 92) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

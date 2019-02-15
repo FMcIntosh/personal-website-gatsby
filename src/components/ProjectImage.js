@@ -2,8 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
 
-const PreviewCompatibleImage = ({ imageInfo }) => {
-  const imageStyle = { borderRadius: '0' };
+const ProjectImage = ({ imageInfo }) => {
+  const imageStyle = {
+    borderRadius: '0',
+    // position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%'
+  };
   const { alt = '', childImageSharp, image } = imageInfo;
 
   if (!!image && !!image.childImageSharp) {
@@ -19,7 +26,7 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
   return null;
 };
 
-PreviewCompatibleImage.propTypes = {
+ProjectImage.propTypes = {
   imageInfo: PropTypes.shape({
     alt: PropTypes.string,
     childImageSharp: PropTypes.object,
@@ -28,4 +35,4 @@ PreviewCompatibleImage.propTypes = {
   }).isRequired
 };
 
-export default PreviewCompatibleImage;
+export default ProjectImage;

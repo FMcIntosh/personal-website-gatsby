@@ -10,57 +10,48 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ProjectImage from './ProjectImage';
 
 const styles = {
   card: {
-    maxWidth: 345
+    width: '100%',
+    maxWidth: 354
+    // maxWidth: 345
   },
   media: {
     height: 140
+  },
+  content: {
+    position: 'relative'
+    // background: '#34343488'
   }
 };
 
-{
-  /* <p>
-
-<span> &bull; </span>
-<small>{post.frontmatter.date}</small>
-</p>
-<p>
-{post.excerpt}
-<br />
-<br />
-<Button variant="contained" color="primary">
-  <Link to={post.fields.slug}>Keep Reading →</Link>
-</Button>
-</p> */
-}
-
 const MediaCard = props => {
   const { classes, post } = props;
+  console.log(post.frontmatter.image);
   return (
     <Card className={classes.card}>
       <CardActionArea>
-        <CardMedia
+        {/* <CardMedia
           className={classes.media}
-          image="https://jpsportsbook.com/wp-content/uploads/2018/10/Team.jpg"
+          image={post.frontmatter.image.childImageSharp.fluid.src}
           title="Contemplative Reptile"
-        />
-        <CardContent>
+        > */}
+        <ProjectImage imageInfo={post.frontmatter.image} />
+        {/* </CardMedia> */}
+        <CardContent className={classes.content}>
           <Link to={post.fields.slug}>
             <Typography gutterBottom variant="h5" component="h2">
               {post.frontmatter.title}
             </Typography>
           </Link>
-          <Typography component="p">{post.excerpt}</Typography>
+          {/* <Typography component="p">{post.excerpt}Out</Typography> */}
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <Link to={post.fields.slug}>Keep Reading →</Link>
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
+          <Link to={post.fields.slug}>Tell me more →</Link>
         </Button>
       </CardActions>
     </Card>
