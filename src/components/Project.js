@@ -39,17 +39,11 @@ const MediaCard = props => {
     config: { mass: 5, tension: 500, friction: 80 }
   });
 
-  console.log(post.frontmatter.image);
+  console.log(image);
   return (
     <div style={{ position: 'relative' }} onClick={() => setIsFlipped(isFlipped => !isFlipped)}>
       <ProjectFront title={title} image={image} transform={transform} opacity={opacity} />
-      <ProjectBack
-        title={title}
-        image={image}
-        excerpt={excerpt}
-        transform={transform}
-        opacity={opacity}
-      />
+      <ProjectBack title={title} excerpt={excerpt} transform={transform} opacity={opacity} />
     </div>
   );
 };

@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
-import Layout from '../components/Layout';
-import Project from '../components/Project';
 import styled from 'styled-components';
-
-const ProjectSection = styled.div`
-  display: flex;
-`;
+import Layout from '../components/Layout';
+import ProjectSection from '../components/ProjectSection';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -22,11 +18,7 @@ export default class IndexPage extends React.Component {
             <div className="content">
               <h1 className="has-text-weight-bold is-size-2">Latest Projects</h1>
             </div>
-            <ProjectSection>
-              {projects.map(({ node: post }) => (
-                <Project key={post.id} post={post} />
-              ))}
-            </ProjectSection>
+            <ProjectSection projects={projects} />
           </div>
         </section>
 
