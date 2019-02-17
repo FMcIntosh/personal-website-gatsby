@@ -26,7 +26,7 @@ const styles = {
   }
 };
 
-const MediaCard = props => {
+const Project = props => {
   const { classes, post } = props;
   const {
     excerpt,
@@ -48,8 +48,8 @@ const MediaCard = props => {
   );
 };
 
-MediaCard.propTypes = {
+Project.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MediaCard);
+export default withStyles(styles)(Project);
