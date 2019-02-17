@@ -34,20 +34,6 @@ const AnimatedCard = styled(a.div)`
   padding: 15px;
 `;
 
-const StyledCard = styled(a.div)`
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 10px;
-  border-radius: 4px;
-  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.2);
-`;
-
 const ProjectSection = props => {
   const { classes, projects } = props;
   const columns = useMedia(
@@ -66,7 +52,7 @@ const ProjectSection = props => {
   }));
 
   const [items, setItems] = useState(data);
-  useEffect(() => void setInterval(() => setItems(shuffle), 2000), []);
+  useEffect(() => void setInterval(() => setItems(shuffle), 4000), []);
 
   let heights = new Array(columns).fill(0); // Each column gets a height starting with zero
   let gridItems = items.map((child, i) => {
@@ -97,9 +83,7 @@ const ProjectSection = props => {
           key={item.key}
           style={{ transform: xy.interpolate((x, y) => `translate3d(${x}px,${y}px,0)`), ...rest }}
         >
-          <StyledCard style={{ backgroundImage: item.css }}>
-            {/* <Project key={item.id} post={item.post} /> */}
-          </StyledCard>
+          <Project imageURL={item.css} />
         </AnimatedCard>
       ))}
     </Container>
