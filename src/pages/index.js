@@ -4,6 +4,35 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
+import Toggle from 'react-toggle';
+import './toggle.css';
+
+const PageContainer = styled.div`
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PageTitle = styled.h1`
+  font-size: 28pt;
+`;
+
+const TitleSection = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LinkSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default class IndexPage extends React.Component {
   render() {
@@ -12,14 +41,19 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Projects</h1>
-            </div>
-            <ProjectSection projects={projects} />
-          </div>
-        </section>
+        <PageContainer>
+          <TitleSection>
+            <PageTitle>Fraser McIntosh</PageTitle>
+            <Toggle />
+          </TitleSection>
+          <LinkSection>
+            <button>L</button>
+            <button>G</button>
+          </LinkSection>
+
+          <PageTitle>Latest Projects</PageTitle>
+          <ProjectSection projects={projects} />
+        </PageContainer>
       </Layout>
     );
   }
