@@ -36,6 +36,7 @@ const StyledCard = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  text-transform: uppercase;
   font-size: 10px;
   line-height: 10px;
   border-radius: 4px;
@@ -48,18 +49,13 @@ const StyledTitle = styled.div`
   font-size: 1.7em;
   display: inline;
   word-wrap: break-word;
-  /* word-spacing: 100vw; */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  text-align: center;
+  word-spacing: 100vw;
 `;
 
 const StyledSpan = styled.span`
   padding: 0.2em;
   box-shadow: 0.1em 0 0 rgba(#34ef23, 0.7), -0.1em 0 0 rgba(#34ef23, 0.7);
-  background-color: #34343488;
+  background-color: #d23669bb;
   background-color: rgba(#34ef23, 0.7);
 `;
 const TitleWrapper = styled.div`
@@ -67,7 +63,7 @@ const TitleWrapper = styled.div`
   height: 100%;
   display: flex;
   /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
 `;
 
 const Project = props => {
