@@ -43,7 +43,7 @@ const ProjectSection = props => {
   );
   const [bind, { width }] = useMeasure();
 
-  const cardHeights = [300, 350, 400, 450];
+  const cardHeights = [350, 400, 450];
   const data = projects.map(({ node: post }) => ({
     css: `url(${post.frontmatter.image.childImageSharp.fluid.src})`,
     post,
@@ -52,7 +52,7 @@ const ProjectSection = props => {
   }));
 
   const [items, setItems] = useState(data);
-  useEffect(() => void setInterval(() => setItems(shuffle), 4000), []);
+  // useEffect(() => void setInterval(() => setItems(shuffle), 10000), []);
 
   let heights = new Array(columns).fill(0); // Each column gets a height starting with zero
   let gridItems = items.map((child, i) => {
@@ -83,7 +83,7 @@ const ProjectSection = props => {
           key={item.key}
           style={{ transform: xy.interpolate((x, y) => `translate3d(${x}px,${y}px,0)`), ...rest }}
         >
-          <Project imageURL={item.css} />
+          <Project imageURL={item.css} project={item.post} />
         </AnimatedCard>
       ))}
     </Container>
