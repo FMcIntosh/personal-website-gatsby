@@ -54,16 +54,16 @@ const StyledTitle = styled.div`
 
 const StyledSpan = styled.span`
   padding: 0.2em;
-  box-shadow: 0.1em 0 0 rgba(#34ef23, 0.7), -0.1em 0 0 rgba(#34ef23, 0.7);
   background-color: #d23669bb;
-  background-color: rgba(#34ef23, 0.7);
 `;
 const TitleWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 0 4px;
 `;
 
 const Project = props => {
