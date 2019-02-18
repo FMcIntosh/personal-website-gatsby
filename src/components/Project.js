@@ -49,7 +49,7 @@ const StyledTitle = styled.div`
   font-size: 1.7em;
   display: inline;
   word-wrap: break-word;
-  word-spacing: 100vw;
+  /* word-spacing: 100vw; */
 `;
 
 const StyledSpan = styled.span`
@@ -88,7 +88,9 @@ const Project = props => {
       <StyledCard imageURL={imageURL} transform={transform} opacity={opacity}>
         <TitleWrapper>
           <StyledTitle>
-            <StyledSpan>{title}</StyledSpan>
+            {title.split('').map(word => (
+              <StyledSpan key={word}>{word}</StyledSpan>
+            ))}
           </StyledTitle>
         </TitleWrapper>
       </StyledCard>
