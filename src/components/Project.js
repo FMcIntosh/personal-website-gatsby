@@ -28,8 +28,10 @@ const styles = {
 };
 
 const StyledCard = styled.div`
+  /* background-image: ${props =>
+    `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), ${props.imageURL}`}; */
   background-image: ${props =>
-    `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), ${props.imageURL}`};
+    `linear-gradient(rgba(76, 39, 56, 0.5),rgba(76, 39, 56, 0.5)), ${props.imageURL}`};
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -46,24 +48,24 @@ const StyledCard = styled.div`
 const StyledTitle = styled.div`
   color: white;
   line-height: 1.8em;
-  font-size: 1.7em;
-  display: inline;
+  font-size: 1.5em;
   word-wrap: break-word;
-  /* word-spacing: 100vw; */
+  width: 75%;
 `;
 
 const StyledSpan = styled.span`
   padding: 0.2em;
-  background-color: #d23669bb;
+  box-shadow: 0.1em 0 0 rgba(#34ef23, 0.7), -0.1em 0 0 rgba(#34ef23, 0.7);
+  /* background-color: #d23669bb; */
+  letter-spacing: 5px;
 `;
 const TitleWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  padding: 0 4px;
+  align-items: center;
 `;
 
 const Project = props => {
@@ -88,9 +90,7 @@ const Project = props => {
       <StyledCard imageURL={imageURL} transform={transform} opacity={opacity}>
         <TitleWrapper>
           <StyledTitle>
-            {title.split('').map(word => (
-              <StyledSpan key={word}>{word}</StyledSpan>
-            ))}
+            <StyledSpan>{title}</StyledSpan>
           </StyledTitle>
         </TitleWrapper>
       </StyledCard>
