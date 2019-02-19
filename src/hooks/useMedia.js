@@ -5,8 +5,15 @@ export default function useMedia(queries, values, defaultValue) {
   const [value, set] = useState(match);
   useEffect(() => {
     const handler = () => set(match);
-    window.addEventListener('resize', handler);
-    return () => window.removeEventListener(handler);
+    if (typeof window !== `undefined`) {
+      window.addEventListener('resize', handler);
+    }
+
+    return () => {
+      if (typeof window !== `undefined`) {
+        window.removeEventListener(handler);
+      }
+    };
   }, []);
   return value;
 }

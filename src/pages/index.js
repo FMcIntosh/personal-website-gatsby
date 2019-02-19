@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
 import Toggle from 'react-toggle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import './toggle.css';
 
 const PageContainer = styled.div`
@@ -34,6 +36,11 @@ const LinkSection = styled.div`
   align-items: center;
 `;
 
+const StyledToggle = styled(Toggle)`
+  position: absolute;
+  right: 5px;
+`;
+
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
@@ -44,10 +51,10 @@ export default class IndexPage extends React.Component {
         <PageContainer>
           <TitleSection>
             <PageTitle>Fraser McIntosh</PageTitle>
-            <Toggle />
+            <StyledToggle />
           </TitleSection>
           <LinkSection>
-            <button>L</button>
+            <FontAwesomeIcon icon={faLinkedinIn} />
             <button>G</button>
           </LinkSection>
 
