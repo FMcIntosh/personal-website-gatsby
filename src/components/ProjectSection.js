@@ -36,11 +36,14 @@ const AnimatedCard = styled(a.div)`
 
 const ProjectSection = props => {
   const { classes, projects } = props;
-  const columns = useMedia(
-    ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)', '(min-width: 500)'],
-    [5, 4, 3, 1],
-    1
-  );
+  const columns =
+    typeof window !== `undefined`
+      ? useMedia(
+          ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)', '(min-width: 500)'],
+          [5, 4, 3, 1],
+          1
+        )
+      : 2;
   const [bind, { width }] = useMeasure();
 
   const cardHeights = [325, 350, 327, 400, 425, 450];
