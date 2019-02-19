@@ -6,7 +6,7 @@ import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
 import Toggle from 'react-toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import './toggle.css';
 
 const PageContainer = styled.div`
@@ -55,7 +55,7 @@ export default class IndexPage extends React.Component {
           </TitleSection>
           <LinkSection>
             <FontAwesomeIcon icon={faLinkedinIn} />
-            <button>G</button>
+            <FontAwesomeIcon icon={faGithub} />
           </LinkSection>
 
           <PageTitle>Latest Projects</PageTitle>
