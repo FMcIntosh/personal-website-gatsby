@@ -30,8 +30,14 @@ const styles = {
 const StyledCard = styled.div`
   /* background-image: ${props =>
     `linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), ${props.imageURL}`}; */
-  background-image: ${props =>
-    `linear-gradient(rgba(76, 39, 56, 0.5),rgba(76, 39, 56, 0.5)), ${props.imageURL}`};
+    background-image: ${props =>
+      `linear-gradient(rgba(210, 54, 105, 1),rgba(210, 54, 105, 1)), ${props.imageURL}`};
+  z-index:2;
+  :hover {
+    background-image: ${props => `${props.imageURL}`};
+  }
+
+  transition: all 0.2s ease;
   position: relative;
   background-size: cover;
   background-position: center center;
@@ -51,6 +57,7 @@ const StyledTitle = styled.div`
   font-size: 1.5em;
   word-wrap: break-word;
   width: 75%;
+  z-index: 1;
 `;
 
 const StyledSpan = styled.span`

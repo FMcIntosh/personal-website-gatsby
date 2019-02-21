@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
-import Toggle from 'react-toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import './toggle.css';
+import Toggle from '../components/Toggle';
+import IconButton from '@material-ui/core/IconButton';
+import useDarkMode from 'use-dark-mode';
 
 const PageContainer = styled.div`
   width: 100%;
-  padding: 0 10%;
+  height: 100%;
+  background: ${props => (props.dark ? '#343434' : '')};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat';
+`;
+
+const PagePadding = styled.div`
+  position: relative;
+  width: 100%;
+  margin: 0 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,6 +32,11 @@ const PageContainer = styled.div`
 
 const PageTitle = styled.h1`
   font-size: 28pt;
+  font-weight: 800;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 20pt;
 `;
 
 const TitleSection = styled.div`
@@ -36,35 +53,38 @@ const LinkSection = styled.div`
   align-items: center;
 `;
 
-const StyledToggle = styled(Toggle)`
-  position: absolute;
-  right: 5px;
-`;
+const IndexPage = props => {
+  const { data } = props;
+  const { edges: projects } = data.projects;
+  const darkMode = useDarkMode(false);
 
-export default class IndexPage extends React.Component {
-  render() {
-    const { data } = this.props;
-    const { edges: projects } = data.projects;
-
-    return (
-      <Layout>
-        <PageContainer>
+  return (
+    <Layout>
+      <PageContainer dark={darkMode.value}>
+        <PagePadding>
           <TitleSection>
             <PageTitle>Fraser McIntosh</PageTitle>
-            <StyledToggle />
+            <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           </TitleSection>
           <LinkSection>
-            <FontAwesomeIcon icon={faLinkedinIn} />
-            <FontAwesomeIcon icon={faGithub} />
+            <IconButton>
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </IconButton>
+
+            <IconButton>
+              <FontAwesomeIcon icon={faGithub} />
+            </IconButton>
           </LinkSection>
 
-          <PageTitle>Latest Projects</PageTitle>
+          <SectionTitle>Latest Projects</SectionTitle>
           <ProjectSection projects={projects} />
-        </PageContainer>
-      </Layout>
-    );
-  }
-}
+        </PagePadding>
+      </PageContainer>
+    </Layout>
+  );
+};
+
+export default IndexPage;
 
 IndexPage.propTypes = {
   data: PropTypes.shape({

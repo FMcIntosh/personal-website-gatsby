@@ -3,6 +3,8 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import './all.sass';
+import 'typeface-merriweather';
+import 'typeface-montserrat';
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
@@ -17,7 +19,7 @@ const TemplateWrapper = ({ children }) => (
       }
     `}
     render={data => (
-      <div>
+      <div style={{ minHeight: '100vh', fontFamily: `'Merriweather','Georgia',serif;` }}>
         <Helmet>
           <html lang="en" />
           <title>{data.site.siteMetadata.title}</title>
