@@ -56,6 +56,7 @@ const LinkSection = styled.div`
 const IndexPage = props => {
   const { data } = props;
   const { edges: projects } = data.projects;
+  const { edges: featuredProjects } = data.featuredProjects;
   const darkMode = useDarkMode(false);
 
   return (
@@ -77,6 +78,9 @@ const IndexPage = props => {
           </LinkSection>
 
           <SectionTitle>Latest Projects</SectionTitle>
+          <ProjectSection projects={featuredProjects} />
+
+          <SectionTitle>Latest Projects</SectionTitle>
           <ProjectSection projects={projects} />
         </PagePadding>
       </PageContainer>
@@ -96,29 +100,23 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    projects: allMarkdownRemark(
+    featuredProjects: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "project" } } }
+      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { eq: true } } }
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-            image {
-              childImageSharp {
-                fluid(maxWidth: 526, quality: 92) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
+          ...ProjectInfo
+        }
+      }
+    }
+    projects: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { ne: true } } }
+    ) {
+      edges {
+        node {
+          ...ProjectInfo
         }
       }
     }

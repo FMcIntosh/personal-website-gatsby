@@ -155,4 +155,25 @@ Project.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+export const ProjectInfo = graphql`
+  fragment ProjectInfo on MarkdownRemark {
+    excerpt(pruneLength: 400)
+    id
+    fields {
+      slug
+    }
+    frontmatter {
+      title
+      templateKey
+      date(formatString: "MMMM DD, YYYY")
+      image {
+        childImageSharp {
+          fluid(maxWidth: 526, quality: 92) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`;
 export default withStyles(styles)(Project);
