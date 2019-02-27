@@ -40,7 +40,7 @@ const ProjectSection = props => {
     typeof window !== `undefined`
       ? useMedia(
           ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)', '(min-width: 500)'],
-          [5, 4, 3, 1],
+          [3, 3, 3, 1],
           1
         )
       : 2;
@@ -76,8 +76,6 @@ const ProjectSection = props => {
     config: { mass: 5, tension: 500, friction: 100 },
     trail: 25
   });
-
-  console.log(transitions);
 
   return (
     <Container {...bind} className="list" style={{ height: Math.max(...heights) }}>

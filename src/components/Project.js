@@ -1,10 +1,15 @@
+import Button from '@material-ui/core/Button';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Dialog from '@material-ui/core/Dialog';
 import { withStyles } from '@material-ui/core/styles';
-import styled from 'styled-components';
+import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useSpring } from 'react-spring';
-import ProjectBack from './ProjectBack';
-import ProjectFront from './ProjectFront';
+import styled from 'styled-components';
+import ProjectImage from './ProjectImage';
 
 const styles = {
   card: {
@@ -34,7 +39,7 @@ const StyledCard = styled.div`
       `linear-gradient(rgba(210, 54, 105, 1),rgba(210, 54, 105, 1)), ${props.imageURL}`};
   z-index:2;
   :hover {
-    background-image: ${props => `${props.imageURL}`};
+    cursor: pointer;
   }
 
   transition: all 0.2s ease;
@@ -76,31 +81,70 @@ const TitleWrapper = styled.div`
 `;
 
 const Project = props => {
-  const { classes, project, imageURL } = props;
+  const { classes, project, imageURL, fullScreen = false } = props;
   const {
     excerpt,
     frontmatter: { title, image }
   } = project;
   const [isFlipped, setIsFlipped] = useState(false);
+  const [open, setOpen] = useState(false);
   const { transform, opacity } = useSpring({
     opacity: isFlipped ? 1 : 0,
     transform: `perspective(600px) rotateX(${isFlipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 }
   });
 
-  console.log(imageURL);
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+  console.log(imageURL, open);
   return (
     <div
       style={{ position: 'relative', width: '100%', height: '100%' }}
-      onClick={() => setIsFlipped(isFlipped => !isFlipped)}
+      onClick={() => {
+        setIsFlipped(isFlipped => !isFlipped);
+      }}
     >
-      <StyledCard imageURL={imageURL} transform={transform} opacity={opacity}>
+      <StyledCard
+        imageURL={imageURL}
+        transform={transform}
+        opacity={opacity}
+        onClick={handleClickOpen}
+      >
         <TitleWrapper>
           <StyledTitle>
             <StyledSpan>{title}</StyledSpan>
           </StyledTitle>
         </TitleWrapper>
       </StyledCard>
+
+      <Dialog
+        fullScreen={fullScreen}
+        fullWidth
+        maxWidth="sm"
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="responsive-dialog-title"
+      >
+        <ProjectImage imageInfo={image} />
+        <CardContent className={classes.content}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {title}
+          </Typography>
+          <p>{excerpt}</p>
+        </CardContent>
+
+        <CardActions>
+          <Button size="small" color="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </CardActions>
+      </Dialog>
       {/* <ProjectFront title={title} image={image} transform={transform} opacity={opacity} />
       <ProjectBack title={title} excerpt={excerpt} transform={transform} opacity={opacity} /> */}
     </div>

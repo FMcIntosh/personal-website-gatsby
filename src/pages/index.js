@@ -67,7 +67,7 @@ const IndexPage = props => {
             <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           </TitleSection>
           <LinkSection>
-            <IconButton>
+            <IconButton color="primary">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </IconButton>
 
