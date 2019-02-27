@@ -81,7 +81,8 @@ const TitleWrapper = styled.div`
 `;
 
 const Project = props => {
-  const { classes, project, imageURL, fullScreen = false } = props;
+  const { classes, project, fullScreen = false } = props;
+  const imageURL = `url(${project.frontmatter.image.childImageSharp.fluid.src})`;
   const {
     excerpt,
     frontmatter: { title, image }
@@ -102,7 +103,6 @@ const Project = props => {
     setOpen(false);
   }
 
-  console.log(imageURL, open);
   return (
     <div
       style={{ position: 'relative', width: '100%', height: '100%' }}
