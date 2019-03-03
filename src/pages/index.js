@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
+import FeaturedProjectSection from '../components/FeaturedProjectSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
@@ -37,13 +38,22 @@ const PageTitle = styled.h1`
 
 const SectionTitle = styled.h2`
   font-size: 20pt;
+  margin: 20px 0;
 `;
 
 const TitleSection = styled.div`
   width: 100%;
-  margin-top: 20px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
+  align-items: center;
+`;
+
+const Section = styled.div`
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -77,11 +87,15 @@ const IndexPage = props => {
             </IconButton>
           </LinkSection>
 
-          <SectionTitle>Latest Projects</SectionTitle>
-          <ProjectSection projects={featuredProjects} />
+          <Section>
+            <SectionTitle>Featured Projects</SectionTitle>
+            <FeaturedProjectSection projects={featuredProjects} />
+          </Section>
 
-          <SectionTitle>Latest Projects</SectionTitle>
-          <ProjectSection projects={projects} />
+          <Section>
+            <SectionTitle>More Projects</SectionTitle>
+            <ProjectSection projects={projects} />
+          </Section>
         </PagePadding>
       </PageContainer>
     </Layout>

@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useSpring } from 'react-spring';
 import styled from 'styled-components';
-import ProjectImage from './ProjectImage';
+import ProjectModal from './ProjectModal';
 
 const styles = {
   card: {
@@ -122,29 +122,14 @@ const Project = props => {
           </StyledTitle>
         </TitleWrapper>
       </StyledCard>
-
-      <Dialog
-        fullScreen={fullScreen}
-        fullWidth
-        maxWidth="sm"
+      <ProjectModal
+        image={image}
+        title={title}
+        excerpt={excerpt}
         open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
-        <ProjectImage imageInfo={image} />
-        <CardContent className={classes.content}>
-          <Typography gutterBottom variant="h5" component="h2">
-            {title}
-          </Typography>
-          <p>{excerpt}</p>
-        </CardContent>
+        handleClose={handleClose}
+      />
 
-        <CardActions>
-          <Button size="small" color="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </CardActions>
-      </Dialog>
       {/* <ProjectFront title={title} image={image} transform={transform} opacity={opacity} />
       <ProjectBack title={title} excerpt={excerpt} transform={transform} opacity={opacity} /> */}
     </div>
