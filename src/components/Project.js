@@ -151,6 +151,7 @@ export const ProjectInfo = graphql`
       title
       templateKey
       date(formatString: "MMMM DD, YYYY")
+      tags
       image {
         childImageSharp {
           fluid(maxWidth: 526, quality: 92) {

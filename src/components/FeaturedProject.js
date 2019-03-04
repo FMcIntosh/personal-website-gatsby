@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ProjectImage from './ProjectImage';
 import ProjectModal from './ProjectModal';
+import TagSection from './TagSection';
 
 const styles = {
   card: {
@@ -31,6 +32,10 @@ const styles = {
   }
 };
 
+const Title = styled.h2`
+  margin: 0;
+`;
+
 const Container = styled.div`
   /* padding: 40px; */
 `;
@@ -40,7 +45,7 @@ const Project = props => {
   const { classes, project, fullScreen = false } = props;
   const {
     excerpt,
-    frontmatter: { title, image }
+    frontmatter: { title, image, tags }
   } = project;
 
   const [open, setOpen] = useState(false);
@@ -61,10 +66,11 @@ const Project = props => {
             <ProjectImage imageInfo={image} />
           </CardActionArea>
 
-          <CardContent className={classes.content}>
-            <Typography gutterBottom variant="h5" component="h2">
+          <CardContent className={classes.content} style={{ display: 'flex' }}>
+            <Typography variant="h5" component="h2">
               {title}
             </Typography>
+            <TagSection tags={tags} />
           </CardContent>
           <CardActions>
             <Button size="small" color="primary">
