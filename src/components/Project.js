@@ -85,7 +85,7 @@ const Project = props => {
   const imageURL = `url(${project.frontmatter.image.childImageSharp.fluid.src})`;
   const {
     excerpt,
-    frontmatter: { title, image }
+    frontmatter: { title, image, tags }
   } = project;
   const [isFlipped, setIsFlipped] = useState(false);
   const [open, setOpen] = useState(false);
@@ -125,6 +125,7 @@ const Project = props => {
       <ProjectModal
         image={image}
         title={title}
+        tags={tags}
         excerpt={excerpt}
         open={open}
         handleClose={handleClose}

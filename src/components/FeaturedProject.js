@@ -86,6 +86,7 @@ const Project = props => {
         excerpt={excerpt}
         open={open}
         handleClose={handleClose}
+        tags={tags}
       />
     </>
   );

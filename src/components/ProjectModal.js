@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import ProjectImage from './ProjectImage';
 import { withStyles } from '@material-ui/core/styles';
+import TagSection from './TagSection';
 
 const styles = {
   card: {
@@ -29,7 +30,7 @@ const styles = {
 };
 
 const ProjectModal = props => {
-  const { classes, image, title, excerpt, open, handleClose } = props;
+  const { classes, image, title, excerpt, open, handleClose, tags } = props;
 
   return (
     <Dialog
@@ -41,10 +42,13 @@ const ProjectModal = props => {
       aria-labelledby="responsive-dialog-title"
     >
       <ProjectImage imageInfo={image} />
-      <CardContent className={classes.content}>
-        <Typography gutterBottom variant="h5" component="h2">
-          {title}
-        </Typography>
+      <CardContent>
+        <div style={{ display: 'flex' }}>
+          <Typography variant="h5" component="h2">
+            {title}
+          </Typography>
+          <TagSection tags={tags} />
+        </div>
         <p>{excerpt}</p>
       </CardContent>
 
