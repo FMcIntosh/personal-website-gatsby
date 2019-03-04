@@ -47,7 +47,14 @@ collections:
         }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "select",
+          multiple: true,
+          options:
+            [react", "node", "nextjs", "gatsby", "heroku", "now", "netlify"],
+        }
   # - name: "pages"
   #   label: "Pages"
   #   files:
