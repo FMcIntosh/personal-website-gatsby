@@ -53,7 +53,7 @@ collections:
           widget: "select",
           multiple: true,
           options:
-            [react", "node", "nextjs", "gatsby", "heroku", "now", "netlify"],
+            ["react", "node", "nextjs", "gatsby", "heroku", "now", "netlify"],
         }
   # - name: "pages"
   #   label: "Pages"
