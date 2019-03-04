@@ -6,6 +6,8 @@ image: /img/circles3to2.jpg
 featured: true
 description: Yo yo
 tags:
-  - test
+  - react
+  - gatsby
+  - netlify
 ---
 I'm making a personal website today
