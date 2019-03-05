@@ -88,7 +88,7 @@ const IndexPage = props => {
           </LinkSection>
 
           <Section>
-            <SectionTitle>Featured Projects</SectionTitle>
+            <SectionTitle>Projects</SectionTitle>
             <FeaturedProjectSection projects={featuredProjects} />
           </Section>
 

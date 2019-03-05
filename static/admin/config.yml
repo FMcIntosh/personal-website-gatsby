@@ -48,14 +48,23 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Repo URL", name: "repo", widget: "string" }
-      - { label: "Demo URL", name "demo", widget: "string" }
+      - { label: "Demo URL", name: "demo", widget: "string" }
       - {
           label: "Tags",
           name: "tags",
           widget: "select",
           multiple: true,
           options:
-            ["react", "node", "nextjs", "gatsby", "heroku", "now", "netlify"],
+            [
+              "react",
+              "node",
+              "redux",
+              "nextjs",
+              "gatsby",
+              "heroku",
+              "now",
+              "netlify",
+            ],
         }
   # - name: "pages"
   #   label: "Pages"

@@ -2,21 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import Tag from './Tag';
 
+// "react", "node","redux", "nextjs", "gatsby", "heroku", "now", "netlify"
 const mapping = {
   react: {
     label: 'React',
     background: '#61dafb',
-    color: '#FFF'
+    color: '#ffffffcc'
   },
   gatsby: {
     label: 'Gatsby',
     background: 'rgb(102, 51, 153)',
-    color: '#FFF'
+    color: '#ffffffcc'
   },
   netlify: {
     label: 'Netlify',
     background: '#00ad9f',
-    color: '#FFF'
+    color: '#ffffffcc'
+  },
+  heroku: {
+    label: 'Heroku',
+    background: '#79589F',
+    color: '#ffffffcc'
+  },
+  nextjs: {
+    label: 'Next.js',
+    background: '#232323',
+    color: '#ffffffcc'
   }
 };
 
