@@ -45,8 +45,10 @@ const Project = props => {
   const { classes, project, fullScreen = false } = props;
   const {
     excerpt,
-    frontmatter: { title, image, tags }
+    frontmatter: { title, image, tags, demo, repo }
   } = project;
+
+  console.log(repo, demo);
 
   const [open, setOpen] = useState(false);
 
