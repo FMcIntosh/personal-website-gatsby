@@ -5,6 +5,8 @@ date: 2019-02-12T07:10:40.551Z
 image: /img/circles3to2.jpg
 featured: true
 description: Yo yo
+repo: 'https://github.com/FMcIntosh/personal-website-gatsby'
+demo: 'https://fraser.space/'
 tags:
   - react
   - gatsby
