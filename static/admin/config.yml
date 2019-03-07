@@ -49,6 +49,7 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Repo URL", name: "repo", widget: "string" }
       - { label: "Demo URL", name: "demo", widget: "string" }
+      - { label: "Test", name: "test", widget: "string" }
       - {
           label: "Tags",
           name: "tags",

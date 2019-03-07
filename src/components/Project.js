@@ -85,7 +85,7 @@ const Project = props => {
   const imageURL = `url(${project.frontmatter.image.childImageSharp.fluid.src})`;
   const {
     excerpt,
-    frontmatter: { title, image, tags }
+    frontmatter: { title, image, tags, repo, demo }
   } = project;
   const [isFlipped, setIsFlipped] = useState(false);
   const [open, setOpen] = useState(false);
@@ -94,6 +94,8 @@ const Project = props => {
     transform: `perspective(600px) rotateX(${isFlipped ? 180 : 0}deg)`,
     config: { mass: 5, tension: 500, friction: 80 }
   });
+
+  console.log(repo, demo);
 
   function handleClickOpen() {
     setOpen(true);
@@ -153,6 +155,7 @@ export const ProjectInfo = graphql`
       templateKey
       date(formatString: "MMMM DD, YYYY")
       tags
+      demo
       image {
         childImageSharp {
           fluid(maxWidth: 526, quality: 92) {
