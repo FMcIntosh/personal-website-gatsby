@@ -7,11 +7,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Link from '@material-ui/core/Link';
 import ProjectImage from './ProjectImage';
 import ProjectModal from './ProjectModal';
 import TagSection from './TagSection';
 
-const styles = {
+const styles = theme => ({
   card: {
     width: '50%',
     // maxWidth: 354,
@@ -29,8 +30,15 @@ const styles = {
   cardBack: {
     position: 'absolute',
     top: 0
+  },
+  link: {
+    textDecoration: 'underline',
+    margin: theme.spacing.unit
+  },
+  actions: {
+    justifyContent: 'space-between'
   }
-};
+});
 
 const Title = styled.h2`
   margin: 0;
@@ -74,10 +82,22 @@ const Project = props => {
             </Typography>
             <TagSection tags={tags} />
           </CardContent>
-          <CardActions>
+          <CardActions className={classes.actions}>
             <Button size="small" color="primary">
               Tell me more →
             </Button>
+            <Typography>
+              {repo && (
+                <Link className={classes.link} href={repo} onClick={e => e.stopPropagation()}>
+                  Repo
+                </Link>
+              )}
+              {demo && (
+                <Link className={classes.link} href={demo} onClick={e => e.stopPropagation()}>
+                  Demo
+                </Link>
+              )}
+            </Typography>
           </CardActions>
         </Container>
       </Card>
