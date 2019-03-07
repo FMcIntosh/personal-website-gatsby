@@ -7,6 +7,7 @@ featured: true
 description: Yo yo
 repo: 'https://github.com/FMcIntosh/personal-website-gatsby'
 demo: 'https://fraser.space/'
+test: uo
 tags:
   - react
   - gatsby
