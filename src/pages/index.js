@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
 import IconButton from '@material-ui/core/IconButton';
-import useDarkMode from 'use-dark-mode';
+import { DayNightContext } from '../../gatsby-browser';
 
 const PageContainer = styled.div`
   width: 100%;
@@ -67,7 +67,7 @@ const IndexPage = props => {
   const { data } = props;
   const { edges: projects } = data.projects;
   const { edges: featuredProjects } = data.featuredProjects;
-  const darkMode = useDarkMode(false);
+  const darkMode = useContext(DayNightContext);
 
   return (
     <Layout>
