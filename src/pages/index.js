@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import { DayNightContext } from '../../gatsby-browser';
 
 const PageContainer = styled.div`
@@ -29,11 +30,6 @@ const PagePadding = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const PageTitle = styled.h1`
-  font-size: 28pt;
-  font-weight: 800;
 `;
 
 const SectionTitle = styled.h2`
@@ -66,15 +62,17 @@ const LinkSection = styled.div`
 const IndexPage = props => {
   const { data } = props;
   const { edges: projects } = data.projects;
-  const { edges: featuredProjects } = data.featuredProjects;
   const darkMode = useContext(DayNightContext);
+  console.log(props);
 
   return (
     <Layout>
       <PageContainer dark={darkMode.value}>
         <PagePadding>
           <TitleSection>
-            <PageTitle>Fraser McIntosh</PageTitle>
+            <Typography variant="h2" component="h1" style={{ fontWeight: 800, fontSize: '28pt' }}>
+              Fraser McIntosh
+            </Typography>
             <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           </TitleSection>
           <LinkSection>
@@ -88,13 +86,10 @@ const IndexPage = props => {
           </LinkSection>
 
           <Section>
-            <SectionTitle>Projects</SectionTitle>
-            <FeaturedProjectSection projects={featuredProjects} />
-          </Section>
-
-          <Section>
-            <SectionTitle>More Projects</SectionTitle>
-            <ProjectSection projects={projects} />
+            <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
+              Recent Projects
+            </Typography>
+            <FeaturedProjectSection projects={projects} />
           </Section>
         </PagePadding>
       </PageContainer>
@@ -114,19 +109,9 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    featuredProjects: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { eq: true } } }
-    ) {
-      edges {
-        node {
-          ...ProjectInfo
-        }
-      }
-    }
     projects: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { ne: true } } }
+      filter: { frontmatter: { templateKey: { eq: "project" } } }
     ) {
       edges {
         node {

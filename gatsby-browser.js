@@ -9,10 +9,9 @@ export const DayNightContext = React.createContext();
 
 const DayNightProvider = ({ children }) => {
   const darkMode = useDarkMode(false);
-  console.log(darkMode);
-  console.log(darkMode.value);
   const theme = createMuiTheme({
     palette: {
+      type: darkMode.value ? 'dark' : 'light',
       primary: {
         main: 'rgb(210, 54, 105)'
       },
@@ -20,8 +19,12 @@ const DayNightProvider = ({ children }) => {
     },
     status: {
       danger: 'orange'
+    },
+    typography: {
+      fontFamily: ['Montserrat', 'sans-serif']
     }
   });
+
   return (
     <DayNightContext.Provider value={darkMode}>
       <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>

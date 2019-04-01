@@ -49,14 +49,12 @@ const Container = styled.div`
 `;
 
 const Project = props => {
-  console.log(props);
   const { classes, project, fullScreen = false } = props;
+  console.log(project);
   const {
     excerpt,
-    frontmatter: { title, image, tags, demo, repo }
+    frontmatter: { title, image, tags, demo, repo, featured, description }
   } = project;
-
-  console.log(repo, demo);
 
   const [open, setOpen] = useState(false);
 
@@ -72,15 +70,19 @@ const Project = props => {
     <>
       <Card key={project.id} className={classes.card} onClick={handleClickOpen}>
         <Container>
-          <CardActionArea>
-            <ProjectImage imageInfo={image} />
-          </CardActionArea>
-
-          <CardContent className={classes.content} style={{ display: 'flex' }}>
-            <Typography variant="h5" component="h2">
-              {title}
-            </Typography>
-            <TagSection tags={tags} />
+          {/* {featured && (
+            <CardActionArea>
+              <ProjectImage imageInfo={image} />
+            </CardActionArea>
+          )} */}
+          <CardContent className={classes.content}>
+            <div style={{ display: 'flex', marginBottom: 5 }}>
+              <Typography variant="h5" component="h2">
+                {title}
+              </Typography>
+              <TagSection tags={tags} />
+            </div>
+            <Typography variant="body1">{description}</Typography>
           </CardContent>
           <CardActions className={classes.actions}>
             <Button size="small" color="primary">

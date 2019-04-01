@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
   switchBase: {
@@ -41,18 +42,18 @@ const Toggle = ({ classes, handleChange, checked }) => {
         checked={checked}
         onChange={handleChange}
         value="toggle"
-        icon={
-          <div className={classes.icon}>
-            <FontAwesomeIcon icon={faSun} size="xs" />
-          </div>
-        }
-        checkedIcon={
-          <div className={classes.icon}>
-            <FontAwesomeIcon icon={faMoon} size="xs" />
-          </div>
-        }
+        // icon={
+        //   <div className={classes.icon}>
+        //     <FontAwesomeIcon icon={faSun} size="xs" />
+        //   </div>
+        // }
+        // checkedIcon={
+        //   <div className={classes.icon}>
+        //     <FontAwesomeIcon icon={faMoon} size="xs" />
+        //   </div>
+        // }
       />
-      <div>{checked ? 'Night' : ' Day '}</div>
+      <Typography variant="body1">{checked ? 'Night' : ' Day '}</Typography>
     </div>
   );
 };
