@@ -1,25 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import FeaturedProject from './FeaturedProject';
-
-const Container = styled.div`
-  position: relative;
-  /* font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica,
-    ubuntu, roboto, noto, segoe ui, arial, sans-serif; */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import Grid from '@material-ui/core/Grid';
 
 const FeaturedProjectSection = ({ projects }) => {
   return (
-    <Container>
+    <Grid container spacing={40}>
       {projects.map(({ node: project }) => (
-        <FeaturedProject key={project.id} project={project} />
+        <Grid item key={project.id} xs={12}>
+          <FeaturedProject key={project.id} project={project} />
+        </Grid>
       ))}
-    </Container>
+    </Grid>
   );
 };
 

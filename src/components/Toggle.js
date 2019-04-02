@@ -53,7 +53,7 @@ const Toggle = ({ classes, handleChange, checked }) => {
         //   </div>
         // }
       />
-      <Typography variant="body1">{checked ? 'Night' : ' Day '}</Typography>
+      <Typography variant="body1">{checked ? 'Night' : ' Day'}</Typography>
     </div>
   );
 };

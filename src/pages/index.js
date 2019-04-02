@@ -11,6 +11,21 @@ import Toggle from '../components/Toggle';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { DayNightContext } from '../../DayNightContex';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  layout: {
+    position: 'relative',
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(800 + theme.spacing.unit * 3 * 2)]: {
+      width: 800,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }
+  }
+});
 
 const PageContainer = styled.div`
   width: 100%;
@@ -20,21 +35,6 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat';
-`;
-
-const PagePadding = styled.div`
-  position: relative;
-  width: 100%;
-  margin: 0 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 20pt;
-  margin: 20px 0;
 `;
 
 const TitleSection = styled.div`
@@ -60,7 +60,7 @@ const LinkSection = styled.div`
 `;
 
 const IndexPage = props => {
-  const { data } = props;
+  const { data, classes } = props;
   const { edges: projects } = data.projects;
   const darkMode = useContext(DayNightContext);
   console.log(darkMode);
@@ -69,7 +69,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <PageContainer dark={darkMode.value}>
-        <PagePadding>
+        <div className={classes.layout}>
           <TitleSection>
             <Typography variant="h2" component="h1" style={{ fontWeight: 800, fontSize: '28pt' }}>
               Fraser McIntosh
@@ -92,13 +92,13 @@ const IndexPage = props => {
             </Typography>
             <FeaturedProjectSection projects={projects} />
           </Section>
-        </PagePadding>
+        </div>
       </PageContainer>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default withStyles(styles)(IndexPage);
 
 IndexPage.propTypes = {
   data: PropTypes.shape({

@@ -14,11 +14,7 @@ import TagSection from './TagSection';
 
 const styles = theme => ({
   card: {
-    width: '50%',
-    // maxWidth: 354,
-    // width: 600
-    // maxWidth: 345
-    marginBottom: 30
+    display: 'flex'
   },
   media: {
     height: 140
@@ -76,13 +72,20 @@ const Project = props => {
             </CardActionArea>
           )} */}
           <CardContent className={classes.content}>
-            <div style={{ display: 'flex', marginBottom: 5 }}>
-              <Typography variant="h5" component="h2">
-                {title}
-              </Typography>
-              <TagSection tags={tags} />
+            <div style={{ display: 'flex' }}>
+              <div>
+                <div style={{ display: 'flex', marginBottom: 5 }}>
+                  <Typography variant="h5" component="h2">
+                    {title}
+                  </Typography>
+                  <TagSection tags={tags} />
+                </div>
+                <Typography variant="body1">{description}</Typography>
+              </div>
+              {/* <div style={{ width: 150, minWidth: 150, maxWidth: 150, height: 100 }}>
+                <ProjectImage imageInfo={image} />
+              </div> */}
             </div>
-            <Typography variant="body1">{description}</Typography>
           </CardContent>
           <CardActions className={classes.actions}>
             <Button size="small" color="primary">
