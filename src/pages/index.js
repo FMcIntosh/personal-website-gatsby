@@ -63,6 +63,7 @@ const IndexPage = props => {
   const { data } = props;
   const { edges: projects } = data.projects;
   const darkMode = useContext(DayNightContext);
+  console.log(darkMode);
   console.log(props);
 
   return (
