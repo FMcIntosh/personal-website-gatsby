@@ -16,16 +16,15 @@ const styles = theme => ({
   card: {
     display: 'flex'
   },
+  cardDetails: {
+    flex: 1
+  },
   media: {
     height: 140
   },
   content: {
     position: 'relative'
     // background: '#34343488'
-  },
-  cardBack: {
-    position: 'absolute',
-    top: 0
   },
   link: {
     textDecoration: 'underline',
@@ -65,12 +64,7 @@ const Project = props => {
   return (
     <>
       <Card key={project.id} className={classes.card} onClick={handleClickOpen}>
-        <Container>
-          {/* {featured && (
-            <CardActionArea>
-              <ProjectImage imageInfo={image} />
-            </CardActionArea>
-          )} */}
+        <div className={classes.cardDetails}>
           <CardContent className={classes.content}>
             <div style={{ display: 'flex' }}>
               <div>
@@ -104,7 +98,7 @@ const Project = props => {
               )}
             </Typography>
           </CardActions>
-        </Container>
+        </div>
       </Card>
 
       <ProjectModal
@@ -119,4 +113,30 @@ const Project = props => {
   );
 };
 
+export const ProjectInfo = graphql`
+  fragment ProjectInfo on MarkdownRemark {
+    excerpt(pruneLength: 400)
+    id
+    fields {
+      slug
+    }
+    frontmatter {
+      title
+      description
+      templateKey
+      date(formatString: "MMMM DD, YYYY")
+      tags
+      repo
+      demo
+      featured
+      image {
+        childImageSharp {
+          fluid(maxWidth: 526, quality: 92) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`;
 export default withStyles(styles)(Project);

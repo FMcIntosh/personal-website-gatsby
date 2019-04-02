@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
-import FeaturedProjectSection from '../components/FeaturedProjectSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
@@ -90,7 +89,7 @@ const IndexPage = props => {
             <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
               Recent Projects
             </Typography>
-            <FeaturedProjectSection projects={projects} />
+            <ProjectSection projects={projects} />
           </Section>
         </div>
       </PageContainer>
