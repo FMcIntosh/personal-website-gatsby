@@ -10,7 +10,7 @@ import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { DayNightContext } from '../../gatsby-browser';
+import { DayNightContext } from '../../DayNightContex';
 
 const PageContainer = styled.div`
   width: 100%;

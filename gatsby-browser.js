@@ -4,8 +4,7 @@ import useDarkMode from 'use-dark-mode';
 import './src/styles/global.css';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
-
-export const DayNightContext = React.createContext();
+import { DayNightContext } from './DayNightContex';
 
 const DayNightProvider = ({ children }) => {
   const darkMode = useDarkMode(false);
