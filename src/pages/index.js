@@ -18,6 +18,10 @@ const styles = theme => ({
     width: 'auto',
     marginLeft: theme.spacing.unit * 3,
     marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.only('xs')]: {
+      marginLeft: theme.spacing.unit * 2,
+      marginRight: theme.spacing.unit * 2
+    },
     [theme.breakpoints.up(800 + theme.spacing.unit * 3 * 2)]: {
       width: 800,
       marginLeft: 'auto',
@@ -41,7 +45,7 @@ const TitleSection = styled.div`
   margin: 20px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const Section = styled.div`
@@ -70,7 +74,11 @@ const IndexPage = props => {
       <PageContainer dark={darkMode.value}>
         <div className={classes.layout}>
           <TitleSection>
-            <Typography variant="h2" component="h1" style={{ fontWeight: 800, fontSize: '28pt' }}>
+            <Typography
+              variant="h2"
+              component="h1"
+              style={{ fontWeight: 800, fontSize: '28pt', padding: '0 40px', textAlign: 'center' }}
+            >
               Fraser McIntosh
             </Typography>
             <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />

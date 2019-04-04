@@ -49,7 +49,7 @@ const ProjectModal = props => {
           </Typography>
           <TagSection tags={tags} />
         </div>
-        <p>{excerpt}</p>
+        <Typography variant="body1">{excerpt}</Typography>
       </CardContent>
 
       <CardActions>

@@ -42,6 +42,7 @@ const Toggle = ({ classes, handleChange, checked }) => {
         checked={checked}
         onChange={handleChange}
         value="toggle"
+        color="primary"
         // icon={
         //   <div className={classes.icon}>
         //     <FontAwesomeIcon icon={faSun} size="xs" />
