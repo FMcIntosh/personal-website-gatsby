@@ -14,11 +14,10 @@ import TagSection from './TagSection';
 
 const styles = theme => ({
   card: {
-    width: '50%',
-    // maxWidth: 354,
-    // width: 600
-    // maxWidth: 345
-    marginBottom: 30
+    display: 'flex'
+  },
+  cardDetails: {
+    flex: 1
   },
   media: {
     height: 140
@@ -26,10 +25,6 @@ const styles = theme => ({
   content: {
     position: 'relative'
     // background: '#34343488'
-  },
-  cardBack: {
-    position: 'absolute',
-    top: 0
   },
   link: {
     textDecoration: 'underline',
@@ -49,14 +44,12 @@ const Container = styled.div`
 `;
 
 const Project = props => {
-  console.log(props);
   const { classes, project, fullScreen = false } = props;
+  console.log(project);
   const {
     excerpt,
-    frontmatter: { title, image, tags, demo, repo }
+    frontmatter: { title, image, tags, demo, repo, featured, description }
   } = project;
-
-  console.log(repo, demo);
 
   const [open, setOpen] = useState(false);
 
@@ -71,16 +64,22 @@ const Project = props => {
   return (
     <>
       <Card key={project.id} className={classes.card} onClick={handleClickOpen}>
-        <Container>
-          <CardActionArea>
-            <ProjectImage imageInfo={image} />
-          </CardActionArea>
-
-          <CardContent className={classes.content} style={{ display: 'flex' }}>
-            <Typography variant="h5" component="h2">
-              {title}
-            </Typography>
-            <TagSection tags={tags} />
+        <div className={classes.cardDetails}>
+          <CardContent className={classes.content}>
+            <div style={{ display: 'flex' }}>
+              <div>
+                <div style={{ display: 'flex', marginBottom: 5 }}>
+                  <Typography variant="h5" component="h2">
+                    {title}
+                  </Typography>
+                  <TagSection tags={tags} />
+                </div>
+                <Typography variant="body1">{description}</Typography>
+              </div>
+              {/* <div style={{ width: 150, minWidth: 150, maxWidth: 150, height: 100 }}>
+                <ProjectImage imageInfo={image} />
+              </div> */}
+            </div>
           </CardContent>
           <CardActions className={classes.actions}>
             <Button size="small" color="primary">
@@ -99,7 +98,7 @@ const Project = props => {
               )}
             </Typography>
           </CardActions>
-        </Container>
+        </div>
       </Card>
 
       <ProjectModal
@@ -114,4 +113,30 @@ const Project = props => {
   );
 };
 
+export const ProjectInfo = graphql`
+  fragment ProjectInfo on MarkdownRemark {
+    excerpt(pruneLength: 400)
+    id
+    fields {
+      slug
+    }
+    frontmatter {
+      title
+      description
+      templateKey
+      date(formatString: "MMMM DD, YYYY")
+      tags
+      repo
+      demo
+      featured
+      image {
+        childImageSharp {
+          fluid(maxWidth: 526, quality: 92) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+`;
 export default withStyles(styles)(Project);

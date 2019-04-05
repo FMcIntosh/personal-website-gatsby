@@ -4,12 +4,31 @@ import { Link, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
-import FeaturedProjectSection from '../components/FeaturedProjectSection';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
 import IconButton from '@material-ui/core/IconButton';
-import { DayNightContext } from '../../gatsby-browser';
+import Typography from '@material-ui/core/Typography';
+import { DayNightContext } from '../../DayNightContex';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  layout: {
+    position: 'relative',
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.only('xs')]: {
+      marginLeft: theme.spacing.unit * 2,
+      marginRight: theme.spacing.unit * 2
+    },
+    [theme.breakpoints.up(800 + theme.spacing.unit * 3 * 2)]: {
+      width: 800,
+      marginLeft: 'auto',
+      marginRight: 'auto'
+    }
+  }
+});
 
 const PageContainer = styled.div`
   width: 100%;
@@ -21,32 +40,12 @@ const PageContainer = styled.div`
   font-family: 'Montserrat';
 `;
 
-const PagePadding = styled.div`
-  position: relative;
-  width: 100%;
-  margin: 0 15%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const PageTitle = styled.h1`
-  font-size: 28pt;
-  font-weight: 800;
-`;
-
-const SectionTitle = styled.h2`
-  font-size: 20pt;
-  margin: 20px 0;
-`;
-
 const TitleSection = styled.div`
   width: 100%;
   margin: 20px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const Section = styled.div`
@@ -64,17 +63,24 @@ const LinkSection = styled.div`
 `;
 
 const IndexPage = props => {
-  const { data } = props;
+  const { data, classes } = props;
   const { edges: projects } = data.projects;
-  const { edges: featuredProjects } = data.featuredProjects;
   const darkMode = useContext(DayNightContext);
+  console.log(darkMode);
+  console.log(props);
 
   return (
     <Layout>
       <PageContainer dark={darkMode.value}>
-        <PagePadding>
+        <div className={classes.layout}>
           <TitleSection>
-            <PageTitle>Fraser McIntosh</PageTitle>
+            <Typography
+              variant="h2"
+              component="h1"
+              style={{ fontWeight: 800, fontSize: '28pt', padding: '0 40px', textAlign: 'center' }}
+            >
+              Fraser McIntosh
+            </Typography>
             <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           </TitleSection>
           <LinkSection>
@@ -88,21 +94,18 @@ const IndexPage = props => {
           </LinkSection>
 
           <Section>
-            <SectionTitle>Projects</SectionTitle>
-            <FeaturedProjectSection projects={featuredProjects} />
-          </Section>
-
-          <Section>
-            <SectionTitle>More Projects</SectionTitle>
+            <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
+              Recent Projects
+            </Typography>
             <ProjectSection projects={projects} />
           </Section>
-        </PagePadding>
+        </div>
       </PageContainer>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default withStyles(styles)(IndexPage);
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
@@ -114,19 +117,9 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    featuredProjects: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { eq: true } } }
-    ) {
-      edges {
-        node {
-          ...ProjectInfo
-        }
-      }
-    }
     projects: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "project" }, featured: { ne: true } } }
+      filter: { frontmatter: { templateKey: { eq: "project" } } }
     ) {
       edges {
         node {

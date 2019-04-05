@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
-import './all.sass';
 import 'typeface-merriweather';
 import 'typeface-montserrat';
 
