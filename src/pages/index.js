@@ -83,6 +83,9 @@ const IndexPage = props => {
             </Typography>
             <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           </TitleSection>
+          <Typography variant="subtitle1" style={{ textAlign: 'center' }}>
+            {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
+          </Typography>
           <LinkSection>
             <IconButton color="primary">
               <FontAwesomeIcon icon={faLinkedinIn} />
