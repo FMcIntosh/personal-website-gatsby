@@ -2,7 +2,6 @@ const _ = require('lodash');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
-import './src/styles/global.css';
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
