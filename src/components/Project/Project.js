@@ -12,6 +12,9 @@ import Link from '@material-ui/core/Link';
 import ProjectImage from './ProjectImage';
 import ProjectModal from './ProjectModal';
 import TagSection from './TagSection';
+import CardMedia from '@material-ui/core/CardMedia';
+import Hidden from '@material-ui/core/Hidden';
+import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   card: {
@@ -33,20 +36,14 @@ const styles = theme => ({
   },
   actions: {
     justifyContent: 'space-between'
+  },
+  cardMedia: {
+    width: 160
   }
 });
 
-const Title = styled.h2`
-  margin: 0;
-`;
-
-const Container = styled.div`
-  /* padding: 40px; */
-`;
-
 const Project = props => {
   const { classes, project, fullScreen = false } = props;
-  console.log(project);
   const {
     excerpt,
     frontmatter: { title, image, tags, demo, repo, featured, description }
@@ -77,13 +74,22 @@ const Project = props => {
                 </div>
                 <Typography variant="body1">{description}</Typography>
               </div>
-              {/* <div style={{ width: 150, minWidth: 150, maxWidth: 150, height: 100 }}>
-                <ProjectImage imageInfo={image} />
-              </div> */}
+              {/* Circle image on the right, parent div needs jc: space-between */}
+              {/* <Hidden xsDown>
+                <div
+                  style={{
+                    justifySelf: 'flex-end'
+                  }}
+                >
+                  <Avatar style={{ width: 80, height: 80 }}>
+                    <ProjectImage imageInfo={image} />
+                  </Avatar>
+                </div>
+              </Hidden> */}
             </div>
           </CardContent>
           <CardActions className={classes.actions}>
-            <Button size="small" color="primary">
+            <Button variant="outlined" size="small" color="primary">
               Tell me more →
             </Button>
             <Typography>
@@ -100,6 +106,10 @@ const Project = props => {
             </Typography>
           </CardActions>
         </div>
+        {/* Image taking full height on the right */}
+        {/* <Hidden xsDown>
+          <ProjectImage imageInfo={image} style={{ width: 160, height: 'auto' }} />
+        </Hidden> */}
       </Card>
 
       <ProjectModal

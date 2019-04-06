@@ -11,9 +11,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { DayNightContext } from '../../DayNightContex';
 import { withStyles } from '@material-ui/core/styles';
+import ProjectImage from '../components/Project/ProjectImage';
+import Avatar from '@material-ui/core/Avatar';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
   layout: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     position: 'relative',
     width: 'auto',
     marginLeft: theme.spacing.unit * 3,
@@ -27,18 +33,18 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto'
     }
+  },
+  footer: {
+    backgroundColor: theme.palette.background.paper,
+    marginTop: theme.spacing.unit * 8,
+    padding: `${theme.spacing.unit * 6}px 0`
+  },
+  avatar: {
+    margin: theme.spacing.unit * 2,
+    width: 80,
+    height: 80
   }
 });
-
-const PageContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  background: ${props => (props.dark ? '#343434' : '')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Montserrat';
-`;
 
 const TitleSection = styled.div`
   width: 100%;
@@ -56,54 +62,52 @@ const Section = styled.div`
   align-items: center;
 `;
 
-const LinkSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const IndexPage = props => {
   const { data, classes } = props;
   const { edges: projects } = data.projects;
   const darkMode = useContext(DayNightContext);
-  console.log(darkMode);
-  console.log(props);
 
   return (
     <Layout>
-      <PageContainer dark={darkMode.value}>
-        <div className={classes.layout}>
-          <TitleSection>
-            <Typography
-              variant="h2"
-              component="h1"
-              style={{ fontWeight: 800, fontSize: '28pt', padding: '0 40px', textAlign: 'center' }}
-            >
-              Fraser McIntosh
-            </Typography>
-            <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
-          </TitleSection>
-          <Typography variant="subtitle1" style={{ textAlign: 'center' }}>
-            {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
+      <div className={classes.layout}>
+        <TitleSection>
+          <Typography
+            variant="h2"
+            component="h1"
+            align="center"
+            style={{ fontWeight: 800, fontSize: '28pt', padding: '0 40px' }}
+          >
+            Fraser McIntosh
           </Typography>
-          <LinkSection>
-            <IconButton color="primary">
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </IconButton>
+          <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
+        </TitleSection>
+        <Typography variant="subtitle1" align="center">
+          {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
+        </Typography>
+        {/* <Avatar className={classes.avatar}>
+          <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
+        </Avatar> */}
 
-            <IconButton>
-              <FontAwesomeIcon icon={faGithub} />
-            </IconButton>
-          </LinkSection>
+        <Section>
+          {/* <Paper style={{ padding: 20 }}> */}
+          <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
+            Recent Projects
+          </Typography>
+          <ProjectSection projects={projects} />
+          {/* </Paper> */}
+        </Section>
+      </div>
+      <footer className={classes.footer}>
+        <div className={classes.layout}>
+          <IconButton>
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </IconButton>
 
-          <Section>
-            <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
-              Recent Projects
-            </Typography>
-            <ProjectSection projects={projects} />
-          </Section>
+          <IconButton>
+            <FontAwesomeIcon icon={faGithub} />
+          </IconButton>
         </div>
-      </PageContainer>
+      </footer>
     </Layout>
   );
 };
