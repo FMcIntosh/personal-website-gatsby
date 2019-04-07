@@ -47,9 +47,13 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'activity' }
-
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Type', name: 'type', widget: 'select', options: ['project', 'blog', 'milestone'] }
+      - {
+          label: 'Type',
+          name: 'type',
+          widget: 'select',
+          options: ['project', 'blog', 'milestone', 'career'],
+        }
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
   # - name: "pages"
