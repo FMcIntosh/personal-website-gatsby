@@ -42,7 +42,7 @@ collections:
         }
   - name: 'activity'
     label: 'Activity'
-    folder: 'src/pages/activity'
+    folder: 'src/content/activity'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
