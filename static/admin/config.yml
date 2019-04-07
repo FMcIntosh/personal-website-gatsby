@@ -40,6 +40,22 @@ collections:
           multiple: true,
           options: ['react', 'node', 'redux', 'nextjs', 'gatsby', 'heroku', 'now', 'netlify'],
         }
+  - name: 'activity'
+    label: 'Activity'
+    folder: 'src/content/activity'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'activity' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Type',
+          name: 'type',
+          widget: 'select',
+          options: ['project', 'blog', 'milestone', 'career'],
+        }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'text' }
   # - name: "pages"
   #   label: "Pages"
   #   files:
