@@ -86,5 +86,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: 'collection',
       value: _.get(parent, 'sourceInstanceName')
     });
+
+    const value = createFilePath({ node, getNode });
+    createNodeField({
+      name: `slug`,
+      node,
+      value
+    });
   }
 };
