@@ -14,6 +14,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ProjectImage from '../components/Project/ProjectImage';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
+import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
 
 const styles = theme => ({
   layout: {
@@ -65,7 +66,9 @@ const Section = styled.div`
 const IndexPage = props => {
   const { data, classes } = props;
   const { edges: projects } = data.projects;
+  const { edges: activity } = data.activity;
   const darkMode = useContext(DayNightContext);
+  console.log(activity);
 
   return (
     <Layout>
@@ -87,7 +90,7 @@ const IndexPage = props => {
         {/* <Avatar className={classes.avatar}>
           <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
         </Avatar> */}
-
+        <ActivityFeed activityItems={activity} />
         <Section>
           {/* <Paper style={{ padding: 20 }}> */}
           <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
@@ -131,6 +134,27 @@ export const pageQuery = graphql`
       edges {
         node {
           ...ProjectInfo
+        }
+      }
+    }
+
+    activity: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "activity" } } }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            collection
+            slug
+          }
+          frontmatter {
+            title
+            description
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+          }
         }
       }
     }
