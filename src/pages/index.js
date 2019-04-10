@@ -44,6 +44,10 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
     width: 80,
     height: 80
+  },
+  sectionTitle: {
+    fontSize: 22,
+    marginTop: theme.spacing.unit * 4
   }
 });
 
@@ -90,10 +94,13 @@ const IndexPage = props => {
         {/* <Avatar className={classes.avatar}>
           <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
         </Avatar> */}
+        <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
+          Latest Activity
+        </Typography>
         <ActivityFeed activityItems={activity} />
         <Section>
           {/* <Paper style={{ padding: 20 }}> */}
-          <Typography variant="h2" gutterBottom style={{ fontSize: '20pt' }}>
+          <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
             Recent Projects
           </Typography>
           <ProjectSection projects={projects} />
@@ -144,17 +151,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          id
-          fields {
-            collection
-            slug
-          }
-          frontmatter {
-            title
-            description
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
+          ...ActivityItemData
         }
       }
     }
