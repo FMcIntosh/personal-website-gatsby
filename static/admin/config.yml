@@ -54,6 +54,11 @@ collections:
           widget: 'select',
           options: ['project', 'blog', 'milestone', 'career'],
         }
+         - {
+          label: 'Category',
+          name: 'category',
+          widget: 'string',
+        }
       - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
   # - name: "pages"
