@@ -61,7 +61,7 @@ const Project = props => {
 
   return (
     <>
-      <Card key={project.id} className={classes.card} onClick={handleClickOpen}>
+      <Card key={project.id} className={classes.card} onClick={handleClickOpen} elevation={0}>
         <div className={classes.cardDetails}>
           <CardContent className={classes.content}>
             <div style={{ display: 'flex' }}>

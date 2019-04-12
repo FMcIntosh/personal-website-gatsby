@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import ActivityItem from './ActivityItem';
 import { withStyles } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   layout: {
@@ -27,6 +28,10 @@ const styles = theme => ({
   },
   inline: {
     display: 'inline'
+  },
+  sectionTitle: {
+    fontSize: 22,
+    marginTop: theme.spacing.unit * 4
   }
 });
 
@@ -34,7 +39,10 @@ const ActivityFeed = props => {
   const { classes, activityItems } = props;
   return (
     <div className={classes.layout}>
-      <Paper elevation={1}>
+      <Paper elevation={0}>
+        <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
+          Latest Activity
+        </Typography>
         <List>
           <div className={classes.container}>
             {activityItems.map(({ node: item }, index) => (

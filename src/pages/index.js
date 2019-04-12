@@ -15,6 +15,7 @@ import ProjectImage from '../components/Project/ProjectImage';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
 import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
+import BackgroundImage from '../components/BackgroundImage';
 
 const styles = theme => ({
   layout: {
@@ -94,9 +95,7 @@ const IndexPage = props => {
         {/* <Avatar className={classes.avatar}>
           <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
         </Avatar> */}
-        <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
-          Latest Activity
-        </Typography>
+
         <ActivityFeed activityItems={activity} />
         <Section>
           {/* <Paper style={{ padding: 20 }}> */}
