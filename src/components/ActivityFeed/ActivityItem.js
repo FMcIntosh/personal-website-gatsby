@@ -66,7 +66,7 @@ const ActivityItem = props => {
               Ali Connors
             </Typography> */}
             {title}
-            <Button variant="text" size="small" color="primary">
+            <Button variant="text" size="small" color="secondary">
               Tell me more →
             </Button>
           </React.Fragment>

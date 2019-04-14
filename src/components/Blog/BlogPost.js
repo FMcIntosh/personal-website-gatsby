@@ -9,9 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-import ProjectImage from './ProjectImage';
-import ProjectModal from './ProjectModal';
-import TagSection from './TagSection';
+
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import Avatar from '@material-ui/core/Avatar';
@@ -43,11 +41,11 @@ const styles = theme => ({
 });
 
 const Project = props => {
-  const { classes, project, fullScreen = false } = props;
+  const { classes, blogPost, fullScreen = false } = props;
   const {
     excerpt,
     frontmatter: { title, image, tags, demo, repo, featured, description }
-  } = project;
+  } = blogPost;
 
   const [open, setOpen] = useState(false);
 
@@ -60,22 +58,20 @@ const Project = props => {
   }
 
   return (
-    <>
-      <Card key={project.id} className={classes.card} onClick={handleClickOpen} elevation={0}>
-        <div className={classes.cardDetails}>
-          <CardContent className={classes.content}>
-            <div style={{ display: 'flex' }}>
-              <div>
-                <div style={{ display: 'flex', marginBottom: 5 }}>
-                  <Typography variant="h5" component="h2">
-                    {title}
-                  </Typography>
-                  <TagSection tags={tags} />
-                </div>
-                <Typography variant="body1">{description}</Typography>
+    <div key={blogPost.id} className={classes.card} onClick={handleClickOpen} elevation={0}>
+      <div className={classes.cardDetails}>
+        <CardContent className={classes.content}>
+          <div style={{ display: 'flex' }}>
+            <div>
+              <div style={{ display: 'flex', marginBottom: 5 }}>
+                <Typography variant="h5" component="h2">
+                  {title}
+                </Typography>
               </div>
-              {/* Circle image on the right, parent div needs jc: space-between */}
-              {/* <Hidden xsDown>
+              <Typography variant="body1">{description}</Typography>
+            </div>
+            {/* Circle image on the right, parent div needs jc: space-between */}
+            {/* <Hidden xsDown>
                 <div
                   style={{
                     justifySelf: 'flex-end'
@@ -86,46 +82,36 @@ const Project = props => {
                   </Avatar>
                 </div>
               </Hidden> */}
-            </div>
-          </CardContent>
-          <CardActions className={classes.actions}>
-            <Button variant="outlined" size="small" color="secondary">
-              Tell me more →
-            </Button>
-            <Typography>
-              {repo && (
-                <Link className={classes.link} href={repo} onClick={e => e.stopPropagation()}>
-                  Repo
-                </Link>
-              )}
-              {demo && (
-                <Link className={classes.link} href={demo} onClick={e => e.stopPropagation()}>
-                  Demo
-                </Link>
-              )}
-            </Typography>
-          </CardActions>
-        </div>
-        {/* Image taking full height on the right */}
-        {/* <Hidden xsDown>
+          </div>
+        </CardContent>
+        <CardActions className={classes.actions}>
+          <Button variant="outlined" size="small" color="secondary">
+            Tell me more →
+          </Button>
+          <Typography>
+            {repo && (
+              <Link className={classes.link} href={repo} onClick={e => e.stopPropagation()}>
+                Repo
+              </Link>
+            )}
+            {demo && (
+              <Link className={classes.link} href={demo} onClick={e => e.stopPropagation()}>
+                Demo
+              </Link>
+            )}
+          </Typography>
+        </CardActions>
+      </div>
+      {/* Image taking full height on the right */}
+      {/* <Hidden xsDown>
           <ProjectImage imageInfo={image} style={{ width: 160, height: 'auto' }} />
         </Hidden> */}
-      </Card>
-
-      <ProjectModal
-        title={title}
-        image={image}
-        excerpt={excerpt}
-        open={open}
-        handleClose={handleClose}
-        tags={tags}
-      />
-    </>
+    </div>
   );
 };
 
-export const ProjectInfo = graphql`
-  fragment ProjectInfo on MarkdownRemark {
+export const BlogPostInfo = graphql`
+  fragment BlogPostInfo on MarkdownRemark {
     excerpt(pruneLength: 400)
     id
     fields {

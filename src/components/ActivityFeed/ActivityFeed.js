@@ -31,7 +31,12 @@ const styles = theme => ({
   },
   sectionTitle: {
     fontSize: 22,
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: 0
+  },
+  card: {
+    border: `1px solid ${theme.palette.divider}`,
+    borderRadius: 10
   }
 });
 
@@ -39,8 +44,8 @@ const ActivityFeed = props => {
   const { classes, activityItems } = props;
   return (
     <div className={classes.layout}>
-      <Paper elevation={0}>
-        <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
+      <Paper elevation={0} className={classes.card}>
+        <Typography variant="h2" gutterBottom className={classes.sectionTitle} align="center">
           Latest Activity
         </Typography>
         <List>
