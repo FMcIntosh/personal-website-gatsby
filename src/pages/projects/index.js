@@ -1,23 +1,18 @@
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
-import Layout from '../components/Layout';
-import ProjectSection from '../components/ProjectSection';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import Toggle from '../components/Toggle';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { DayNightContext } from '../../DayNightContex';
-import { withStyles } from '@material-ui/core/styles';
-import ProjectImage from '../components/Project/ProjectImage';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
-import BackgroundImage from '../components/BackgroundImage';
-import BlogSection from '../components/BlogSection';
 import Button from '@material-ui/core/button';
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { DayNightContext } from '../../../DayNightContex';
+import ActivityFeed from '../../components/ActivityFeed/ActivityFeed';
+import BlogSection from '../../components/BlogSection';
+import Layout from '../../components/Layout';
+import ProjectSection from '../../components/ProjectSection';
+import Toggle from '../../components/Toggle';
 
 const styles = theme => ({
   section: {
@@ -82,8 +77,6 @@ const styles = theme => ({
 const IndexPage = props => {
   const { data, classes } = props;
   const { edges: projects } = data.projects;
-  const { edges: activity } = data.activity;
-  const { edges: blogPosts } = data.blogPosts;
 
   const darkMode = useContext(DayNightContext);
 
@@ -92,7 +85,7 @@ const IndexPage = props => {
       <section className={classes.section}>
         <div className={classes.layout}>
           <Typography variant="h2" component="h1" align="center" className={classes.title}>
-            Fraser McIntosh
+            Projects
           </Typography>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           <Typography
@@ -103,51 +96,18 @@ const IndexPage = props => {
           >
             {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
           </Typography>
-          {/* <Avatar className={classes.avatar}>
-          <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
-        </Avatar> */}
-          <div className={classes.activityContainer}>
-            <ActivityFeed activityItems={activity} />
-          </div>
-        </div>
-      </section>
-      <section className={classes.styleSection}>
-        <div className={classes.layout}>
-          {/* <Paper style={{ padding: 20 }}> */}
           <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
             Recent Projects
           </Typography>
           <ProjectSection projects={projects} />
-          <Link to="/projects">
-            <Button
-              variant="contained"
-              size="small"
-              color="primary"
-              className={classes.sectionAction}
-            >
-              See more projects
-            </Button>
-          </Link>
-          {/* </Paper> */}
-        </div>
-      </section>
-      <section className={classes.section}>
-        <div className={classes.layout}>
-          {/* <Paper style={{ padding: 20 }}> */}
-          <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
-            From the blog
-          </Typography>
-          <BlogSection blogPosts={blogPosts} />
-          <Link to="/blog">
-            <Button
-              variant="contained"
-              size="small"
-              color="primary"
-              className={classes.sectionAction}
-            >
-              All posts
-            </Button>
-          </Link>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            className={classes.sectionAction}
+          >
+            <Link to="/">Home</Link>
+          </Button>
           {/* </Paper> */}
         </div>
       </section>
@@ -179,7 +139,7 @@ IndexPage.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query ProjectQuery {
     projects: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "project" } } }
@@ -187,28 +147,6 @@ export const pageQuery = graphql`
       edges {
         node {
           ...ProjectInfo
-        }
-      }
-    }
-
-    activity: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "activity" } } }
-    ) {
-      edges {
-        node {
-          ...ActivityItemData
-        }
-      }
-    }
-
-    blogPosts: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
-    ) {
-      edges {
-        node {
-          ...BlogPostInfo
         }
       }
     }
