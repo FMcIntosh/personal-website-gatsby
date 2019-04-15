@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
 import BackgroundImage from '../components/BackgroundImage';
 import BlogSection from '../components/BlogSection';
+import Button from '@material-ui/core/button';
 
 const styles = theme => ({
   section: {
@@ -72,7 +73,10 @@ const styles = theme => ({
     fontSize: '28pt',
     padding: '0 40px'
   },
-  subtitle: { margin: theme.spacing.unit * 3 }
+  subtitle: { margin: theme.spacing.unit * 3 },
+  sectionAction: {
+    marginTop: theme.spacing.unit * 4
+  }
 });
 
 const IndexPage = props => {
@@ -115,6 +119,14 @@ const IndexPage = props => {
             Recent Projects
           </Typography>
           <ProjectSection projects={projects} />
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            className={classes.sectionAction}
+          >
+            See more projects
+          </Button>
           {/* </Paper> */}
         </div>
       </section>
@@ -125,6 +137,14 @@ const IndexPage = props => {
             From the blog
           </Typography>
           <BlogSection blogPosts={blogPosts} />
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            className={classes.sectionAction}
+          >
+            All posts
+          </Button>
           {/* </Paper> */}
         </div>
       </section>
