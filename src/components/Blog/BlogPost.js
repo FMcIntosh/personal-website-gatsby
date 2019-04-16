@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
+import GatsbyLink from '../GatsbyLink';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -8,7 +9,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import MuiLink from '@material-ui/core/Link';
 
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
@@ -44,6 +45,7 @@ const Project = props => {
   const { classes, blogPost, fullScreen = false } = props;
   const {
     excerpt,
+    fields: { slug },
     frontmatter: { title, image, tags, demo, repo, featured, description }
   } = blogPost;
 
@@ -86,18 +88,18 @@ const Project = props => {
         </CardContent>
         <CardActions className={classes.actions}>
           <Button variant="outlined" size="small" color="secondary">
-            Tell me more →
+            <GatsbyLink to={slug}>Tell me more →</GatsbyLink>
           </Button>
           <Typography>
             {repo && (
-              <Link className={classes.link} href={repo} onClick={e => e.stopPropagation()}>
+              <MuiLink className={classes.link} href={repo} onClick={e => e.stopPropagation()}>
                 Repo
-              </Link>
+              </MuiLink>
             )}
             {demo && (
-              <Link className={classes.link} href={demo} onClick={e => e.stopPropagation()}>
+              <MuiLink className={classes.link} href={demo} onClick={e => e.stopPropagation()}>
                 Demo
-              </Link>
+              </MuiLink>
             )}
           </Typography>
         </CardActions>

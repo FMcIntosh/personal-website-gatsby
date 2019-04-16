@@ -1,6 +1,7 @@
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@material-ui/core/Button';
+import GatsbyLink from '../../components/GatsbyLink';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -97,16 +98,14 @@ const IndexPage = props => {
             {'This is a blog where blogs are blogged'}
           </Typography>
           <BlogSection blogPosts={blogPosts} />
-          <Link to="/">
-            <Button
-              variant="contained"
-              size="small"
-              color="primary"
-              className={classes.sectionAction}
-            >
-              Home
-            </Button>
-          </Link>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            className={classes.sectionAction}
+          >
+            <GatsbyLink to="/">Home</GatsbyLink>
+          </Button>
           {/* </Paper> */}
         </div>
       </section>

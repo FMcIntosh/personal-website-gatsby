@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
+import GatsbyLink from '../components/GatsbyLink';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
@@ -118,7 +119,7 @@ const IndexPage = props => {
             Recent Projects
           </Typography>
           <ProjectSection projects={projects} />
-          <Link to="/projects">
+          <GatsbyLink to="/projects">
             <Button
               variant="contained"
               size="small"
@@ -127,7 +128,7 @@ const IndexPage = props => {
             >
               See more projects
             </Button>
-          </Link>
+          </GatsbyLink>
           {/* </Paper> */}
         </div>
       </section>
@@ -138,7 +139,7 @@ const IndexPage = props => {
             From the blog
           </Typography>
           <BlogSection blogPosts={blogPosts} />
-          <Link to="/blog">
+          <GatsbyLink to="/blog">
             <Button
               variant="contained"
               size="small"
@@ -147,7 +148,7 @@ const IndexPage = props => {
             >
               All posts
             </Button>
-          </Link>
+          </GatsbyLink>
           {/* </Paper> */}
         </div>
       </section>

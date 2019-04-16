@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
+import GatsbyLink from '../GatsbyLink';
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -46,6 +47,7 @@ const Project = props => {
   const { classes, project, fullScreen = false } = props;
   const {
     excerpt,
+    fields: { slug },
     frontmatter: { title, image, tags, demo, repo, featured, description }
   } = project;
 
@@ -90,7 +92,7 @@ const Project = props => {
           </CardContent>
           <CardActions className={classes.actions}>
             <Button variant="outlined" size="small" color="secondary">
-              Tell me more →
+              <GatsbyLink to={slug}>Tell me more →</GatsbyLink>
             </Button>
             <Typography>
               {repo && (
