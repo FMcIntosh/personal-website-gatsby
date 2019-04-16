@@ -17,7 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
 import BackgroundImage from '../components/BackgroundImage';
 import BlogSection from '../components/BlogSection';
-import Button from '@material-ui/core/button';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   section: {

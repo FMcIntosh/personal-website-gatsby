@@ -1,9 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Project from './Project/Project';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/button';
+import React from 'react';
+import Project from './Project/Project';
 
 const styles = theme => ({
   layout: {
