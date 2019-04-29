@@ -1,24 +1,19 @@
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+import { DayNightContext } from '../../DayNightContex';
+import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
+import BlogSection from '../components/BlogSection';
 import GatsbyLink from '../components/GatsbyLink';
-import styled from 'styled-components';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import Toggle from '../components/Toggle';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { DayNightContext } from '../../DayNightContex';
-import { withStyles } from '@material-ui/core/styles';
-import ProjectImage from '../components/Project/ProjectImage';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
-import BackgroundImage from '../components/BackgroundImage';
-import BlogSection from '../components/BlogSection';
-import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   section: {

@@ -1,25 +1,20 @@
-import React, { useState } from 'react';
-import { graphql } from 'gatsby';
-import GatsbyLink from '../GatsbyLink';
-import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Link from '@material-ui/core/Link';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import { graphql, navigate } from 'gatsby';
+import React, { useState } from 'react';
+import GatsbyLink from '../GatsbyLink';
 import ProjectImage from './ProjectImage';
-import ProjectModal from './ProjectModal';
 import TagSection from './TagSection';
-import CardMedia from '@material-ui/core/CardMedia';
-import Hidden from '@material-ui/core/Hidden';
-import Avatar from '@material-ui/core/Avatar';
 
 const styles = theme => ({
   card: {
-    display: 'flex'
+    display: 'flex',
+    flexDirection: 'column'
   },
   cardDetails: {
     flex: 1
@@ -39,12 +34,12 @@ const styles = theme => ({
     justifyContent: 'space-between'
   },
   cardMedia: {
-    width: 160
+    width: '100%'
   }
 });
 
 const Project = props => {
-  const { classes, project, fullScreen = false } = props;
+  const { classes, project } = props;
   const {
     excerpt,
     fields: { slug },
@@ -53,17 +48,11 @@ const Project = props => {
 
   const [open, setOpen] = useState(false);
 
-  function handleClickOpen() {
-    setOpen(true);
-  }
-
-  function handleClose() {
-    setOpen(false);
-  }
-
   return (
     <>
-      <Card key={project.id} className={classes.card} onClick={handleClickOpen} elevation={0}>
+      <Card key={project.id} className={classes.card} onClick={() => navigate(slug)} elevation={0}>
+        <ProjectImage imageInfo={image} className={classes.cardMedia} />
+
         <div className={classes.cardDetails}>
           <CardContent className={classes.content}>
             <div style={{ display: 'flex' }}>
@@ -113,15 +102,6 @@ const Project = props => {
           <ProjectImage imageInfo={image} style={{ width: 160, height: 'auto' }} />
         </Hidden> */}
       </Card>
-
-      <ProjectModal
-        title={title}
-        image={image}
-        excerpt={excerpt}
-        open={open}
-        handleClose={handleClose}
-        tags={tags}
-      />
     </>
   );
 };
