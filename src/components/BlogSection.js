@@ -10,7 +10,7 @@ const styles = theme => ({
     width: 'auto',
     // marginLeft: theme.spacing.unit * 3,
     // marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
+    [theme.breakpoints.up(600 + theme.spacing(3 * 2))]: {
       width: 600,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -21,7 +21,7 @@ const styles = theme => ({
 const ProjectSection = ({ classes, blogPosts }) => {
   return (
     <div className={classes.layout}>
-      <Grid container spacing={24}>
+      <Grid container spacing={3}>
         {blogPosts.map(({ node: blogPost }) => (
           <Grid item key={blogPost.id} xs={12}>
             <BlogPost key={blogPost.id} blogPost={blogPost} />

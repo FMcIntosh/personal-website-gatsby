@@ -37,7 +37,7 @@ const Toggle = ({ classes, handleChange, checked }) => {
   return (
     <div className={classes.container}>
       <Switch
-        classes={{ root: classes.switchBase, switchBase: classes.switchBase }}
+        // classes={{ root: classes.switchBase, switchBase: classes.switchBase }}
         className={classes.toggle}
         checked={checked}
         onChange={handleChange}

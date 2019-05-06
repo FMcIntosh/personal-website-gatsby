@@ -14,17 +14,18 @@ import GatsbyLink from '../components/GatsbyLink';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
 import Toggle from '../components/Toggle';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   section: {
-    paddingTop: theme.spacing.unit * 6,
-    paddingBottom: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(8),
     width: '100%',
     background: theme.palette.background.paper
   },
   styleSection: {
-    paddingTop: theme.spacing.unit * 6,
-    paddingBottom: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(8),
     width: '100%',
     background: theme.palette.background.primaryAccent,
     borderTop: `1px solid ${theme.palette.divider}`,
@@ -36,13 +37,13 @@ const styles = theme => ({
     alignItems: 'center',
     position: 'relative',
     width: 'auto',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3
+      marginLeft: theme.spacing(3),
+      marginRight: theme.spacing(3)
     },
-    [theme.breakpoints.up(900 + theme.spacing.unit * 3 * 2)]: {
+    [theme.breakpoints.up(900 + theme.spacing(3 * 2))]: {
       width: 900,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -50,28 +51,24 @@ const styles = theme => ({
   },
   footer: {
     backgroundColor: theme.palette.background.secondaryAccent,
-    padding: `${theme.spacing.unit * 6}px 0`
+    padding: `${theme.spacing(6)}px 0`
   },
   avatar: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 80,
     height: 80
   },
   sectionTitle: {
     fontSize: 22,
-    marginBottom: theme.spacing.unit * 3
-  },
-  activityContainer: {
-    marginTop: theme.spacing.unit * 4
+    marginBottom: theme.spacing(3)
   },
   title: {
     fontWeight: 800,
     fontSize: '28pt',
     padding: '0 40px'
   },
-  subtitle: { margin: theme.spacing.unit * 3 },
   sectionAction: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing(4)
   }
 });
 
@@ -87,24 +84,23 @@ const IndexPage = props => {
     <Layout>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Typography variant="h2" component="h1" align="center" className={classes.title}>
-            Fraser McIntosh
-          </Typography>
+          <Box m={1}>
+            <Typography variant="h2" component="h1" align="center" className={classes.title}>
+              Fraser McIntosh
+            </Typography>
+          </Box>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            className={classes.subtitle}
-          >
-            {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
-          </Typography>
+          <Box m={3}>
+            <Typography variant="subtitle1" align="center" color="textSecondary">
+              {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
+            </Typography>
+          </Box>
           {/* <Avatar className={classes.avatar}>
           <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
         </Avatar> */}
-          <div className={classes.activityContainer}>
+          <Box m={4}>
             <ActivityFeed activityItems={activity} />
-          </div>
+          </Box>
         </div>
       </section>
       <section className={classes.styleSection}>

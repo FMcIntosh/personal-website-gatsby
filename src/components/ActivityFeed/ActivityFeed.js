@@ -12,14 +12,14 @@ const styles = theme => ({
     width: 'auto',
     // marginLeft: theme.spacing.unit * 3,
     // marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
+    [theme.breakpoints.up(400 + theme.spacing(3 * 2))]: {
       width: 400,
       marginLeft: 'auto',
       marginRight: 'auto'
     }
   },
   container: {
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   root: {
     width: '100%',
@@ -31,7 +31,7 @@ const styles = theme => ({
   },
   sectionTitle: {
     fontSize: 22,
-    marginTop: theme.spacing.unit * 2,
+    marginTop: theme.spacing(2),
     marginBottom: 0
   },
   card: {
@@ -52,7 +52,7 @@ const ActivityFeed = props => {
           <div className={classes.container}>
             {activityItems.map(({ node: item }, index) => (
               <>
-                {index !== 0 && <Divider style={{ margin: '0 16px' }} />}
+                {index !== 0 && <Divider key={item.id + 'divider'} style={{ margin: '0 16px' }} />}
                 <ActivityItem key={item.id} item={item} />
               </>
             ))}

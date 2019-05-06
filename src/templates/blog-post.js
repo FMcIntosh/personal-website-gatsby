@@ -9,17 +9,18 @@ import ProjectImage from '../components/Project/ProjectImage';
 import { withStyles } from '@material-ui/core/styles';
 import { DayNightContext } from '../../DayNightContex';
 import GatsbyLink from '../components/GatsbyLink';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   section: {
-    paddingTop: theme.spacing.unit * 6,
-    paddingBottom: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(8),
     width: '100%',
     background: theme.palette.background.paper
   },
   styleSection: {
-    paddingTop: theme.spacing.unit * 6,
-    paddingBottom: theme.spacing.unit * 8,
+    paddingTop: theme.spacing(6),
+    paddingBottom: theme.spacing(8),
     width: '100%',
     background: theme.palette.background.primaryAccent,
     borderTop: `1px solid ${theme.palette.divider}`,
@@ -31,13 +32,13 @@ const styles = theme => ({
     alignItems: 'center',
     position: 'relative',
     width: 'auto',
-    marginLeft: theme.spacing.unit * 2,
-    marginRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing.unit * 3,
-      marginRight: theme.spacing.unit * 3
+      marginLeft: theme.spacing(3),
+      marginRight: theme.spacing(3)
     },
-    [theme.breakpoints.up(700 + theme.spacing.unit * 3 * 2)]: {
+    [theme.breakpoints.up(700 + theme.spacing(3 * 2))]: {
       width: 700,
       marginLeft: 'auto',
       marginRight: 'auto'
@@ -45,25 +46,25 @@ const styles = theme => ({
   },
   footer: {
     backgroundColor: theme.palette.background.secondaryAccent,
-    padding: `${theme.spacing.unit * 6}px 0`
+    padding: `${theme.spacing(6)}px 0`
   },
   avatar: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     width: 80,
     height: 80
   },
   sectionTitle: {
     fontSize: 22,
-    marginBottom: theme.spacing.unit * 3
+    marginBottom: theme.spacing(3)
   },
   title: {
     fontWeight: 800,
     fontSize: '28pt',
     padding: '0 40px'
   },
-  subtitle: { marginBottom: theme.spacing.unit * 3 },
+  subtitle: { marginBottom: theme.spacing(3) },
   sectionAction: {
-    marginTop: theme.spacing.unit * 4
+    marginTop: theme.spacing(4)
   },
   cardMedia: {
     width: '80%'
@@ -85,9 +86,11 @@ const ProjectPage = props => {
     <Layout>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Typography variant="h2" component="h1" align="center" className={classes.title}>
-            {title}
-          </Typography>
+          <Box mb={6}>
+            <Typography variant="h2" component="h1" align="center" className={classes.title}>
+              {title}
+            </Typography>
+          </Box>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           <Typography
             variant="subtitle1"

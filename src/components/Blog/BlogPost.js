@@ -31,7 +31,7 @@ const styles = theme => ({
   },
   link: {
     textDecoration: 'underline',
-    margin: theme.spacing.unit
+    margin: theme.spacing(1)
   },
   actions: {
     justifyContent: 'space-between'
