@@ -112,9 +112,9 @@ const ProjectPage = props => {
           >
             {excerpt}
           </Typography>
-          <GatsbyLink to="/projects">
+          <GatsbyLink to="/blog">
             <Button variant="text" size="small" color="primary" className={classes.sectionAction}>
-              Back to projects
+              Back to blog
             </Button>
           </GatsbyLink>
         </div>

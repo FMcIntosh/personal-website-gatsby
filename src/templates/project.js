@@ -9,6 +9,7 @@ import ProjectImage from '../components/Project/ProjectImage';
 import { withStyles } from '@material-ui/core/styles';
 import { DayNightContext } from '../../DayNightContex';
 import GatsbyLink from '../components/GatsbyLink';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   section: {
@@ -58,15 +59,10 @@ const styles = theme => ({
   },
   title: {
     fontWeight: 800,
-    fontSize: '28pt',
-    padding: '0 40px'
+    fontSize: '28pt'
   },
-  subtitle: { marginBottom: theme.spacing(3) },
   sectionAction: {
     marginTop: theme.spacing(4)
-  },
-  cardMedia: {
-    width: '80%'
   }
 });
 
@@ -85,28 +81,23 @@ const ProjectPage = props => {
     <Layout>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Typography variant="h2" component="h1" align="center" className={classes.title}>
-            {title}
-          </Typography>
+          <Box mb={2}>
+            <Typography variant="h2" component="h1" align="center" className={classes.title}>
+              {title}
+            </Typography>
+          </Box>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            className={classes.subtitle}
-          >
-            {description}
-          </Typography>
-          <div className={classes.cardMedia}>
-            <ProjectImage imageInfo={image} />
-          </div>
+          <Box mb={6}>
+            <Typography variant="subtitle1" align="center" color="textSecondary">
+              {description}
+            </Typography>
+          </Box>
 
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            className={classes.subtitle}
-          >
+          <Box mb={6} width={'80%'}>
+            <ProjectImage imageInfo={image} />
+          </Box>
+
+          <Typography variant="subtitle1" align="left" color="textSecondary">
             {excerpt}
           </Typography>
           <GatsbyLink to="/projects">

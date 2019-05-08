@@ -14,6 +14,7 @@ import BlogSection from '../../components/BlogSection';
 import Layout from '../../components/Layout';
 import ProjectSection from '../../components/ProjectSection';
 import Toggle from '../../components/Toggle';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   section: {
@@ -85,21 +86,12 @@ const IndexPage = props => {
     <Layout>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Typography variant="h2" component="h1" align="center" className={classes.title}>
-            Projects
-          </Typography>
+          <Box mb={2}>
+            <Typography variant="h2" component="h1" align="center" className={classes.title}>
+              Projects
+            </Typography>
+          </Box>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
-          <Typography
-            variant="subtitle1"
-            align="center"
-            color="textSecondary"
-            className={classes.subtitle}
-          >
-            {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
-          </Typography>
-          <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
-            Recent Projects
-          </Typography>
           <ProjectSection projects={projects} />
           <Button
             variant="contained"
@@ -118,7 +110,6 @@ const IndexPage = props => {
             <IconButton>
               <FontAwesomeIcon icon={faLinkedinIn} />
             </IconButton>
-
             <IconButton>
               <FontAwesomeIcon icon={faGithub} />
             </IconButton>
