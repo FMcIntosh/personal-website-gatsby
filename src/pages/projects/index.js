@@ -53,55 +53,34 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.secondaryAccent,
     padding: `${theme.spacing(6)}px 0`
   },
-  avatar: {
-    margin: theme.spacing(2),
-    width: 80,
-    height: 80
-  },
-  sectionTitle: {
-    fontSize: 22,
-    marginBottom: theme.spacing(3)
-  },
-  activityContainer: {
-    marginTop: theme.spacing(4)
-  },
   title: {
     fontWeight: 800,
     fontSize: '28pt',
     padding: '0 40px'
-  },
-  subtitle: { margin: theme.spacing(3) },
-  sectionAction: {
-    marginTop: theme.spacing(4)
   }
 });
 
 const IndexPage = props => {
   const { data, classes } = props;
   const { edges: projects } = data.projects;
-
   const darkMode = useContext(DayNightContext);
 
   return (
     <Layout>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Box mb={2}>
-            <Typography variant="h2" component="h1" align="center" className={classes.title}>
-              Projects
-            </Typography>
-          </Box>
+          <Typography variant="h2" component="h1" align="center" className={classes.title}>
+            Projects
+          </Typography>
           <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
-          <ProjectSection projects={projects} />
-          <Button
-            variant="contained"
-            size="small"
-            color="primary"
-            className={classes.sectionAction}
-          >
-            <GatsbyLink to="/">Home</GatsbyLink>
-          </Button>
-          {/* </Paper> */}
+          <Box mt={4}>
+            <ProjectSection projects={projects} />
+          </Box>
+          <Box mt={4}>
+            <Button variant="contained" size="small" color="primary">
+              <GatsbyLink to="/">Home</GatsbyLink>
+            </Button>
+          </Box>
         </div>
       </section>
       <footer className={classes.footer}>

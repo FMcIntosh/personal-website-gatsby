@@ -11,6 +11,7 @@ import { faFlag, faBriefcase, faFeatherAlt } from '@fortawesome/free-solid-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format, render, cancel, register } from 'timeago.js';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
   inline: {
@@ -45,9 +46,9 @@ const ActivityItem = props => {
 
   return (
     <ListItem>
-      {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /> */}
-
-      <FontAwesomeIcon icon={iconSelect[type]} className={classes.icon} />
+      <Box mr={2}>
+        <FontAwesomeIcon icon={iconSelect[type]} className={classes.icon} />
+      </Box>
       <ListItemText
         primary={
           <div className={classes.title}>
@@ -62,9 +63,6 @@ const ActivityItem = props => {
         primaryTypographyProps={{ variant: 'body2' }}
         secondary={
           <React.Fragment>
-            {/* <Typography component="span" className={classes.inline} color="textPrimary">
-              Ali Connors
-            </Typography> */}
             {title}
             <Button variant="text" size="small" color="secondary">
               Tell me more →

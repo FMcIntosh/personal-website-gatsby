@@ -125,16 +125,6 @@ export const BlogPostInfo = graphql`
       templateKey
       date(formatString: "MMMM DD, YYYY")
       tags
-      repo
-      demo
-      featured
-      image {
-        childImageSharp {
-          fluid(maxWidth: 526, quality: 92) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
     }
   }
 `;
