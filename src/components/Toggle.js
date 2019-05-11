@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Switch from '@material-ui/core/Switch';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import Typography from '@material-ui/core/Typography';
+import { DayNightContext } from '../../DayNightContex';
+import Box from '@material-ui/core/Box';
 
 const styles = {
   switchBase: {
@@ -27,20 +29,25 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    right: '0'
+    alignItems: 'center'
+  },
+  toggle: {
+    p: {
+      marginTop: '-10px'
+    }
   }
 };
 
 const Toggle = ({ classes, handleChange, checked }) => {
+  const darkMode = useContext(DayNightContext);
+
   return (
     <div className={classes.container}>
       <Switch
         // classes={{ root: classes.switchBase, switchBase: classes.switchBase }}
         className={classes.toggle}
-        checked={checked}
-        onChange={handleChange}
+        checked={darkMode.value}
+        onChange={darkMode.toggle}
         value="toggle"
         color="secondary"
         // icon={
@@ -54,7 +61,9 @@ const Toggle = ({ classes, handleChange, checked }) => {
         //   </div>
         // }
       />
-      <Typography variant="body1">{checked ? 'Night' : ' Day'}</Typography>
+      <Box mt={-1} fontSize={14}>
+        <Typography variant="body1">{checked ? 'Night' : ' Day'}</Typography>
+      </Box>
     </div>
   );
 };

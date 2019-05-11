@@ -7,21 +7,22 @@ import Typography from '@material-ui/core/Typography';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { DayNightContext } from '../../DayNightContex';
 import ActivityFeed from '../components/ActivityFeed/ActivityFeed';
 import BlogSection from '../components/BlogSection';
 import GatsbyLink from '../components/GatsbyLink';
 import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
-import Toggle from '../components/Toggle';
 import Box from '@material-ui/core/Box';
+import NavBar from '../components/NavBar';
 
 const styles = theme => ({
   section: {
     paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
     width: '100%',
-    background: theme.palette.background.paper
+
+    //  background:'linear-gradient(180deg, rgba(46,33,77,1) 31%, rgba(144,102,115,1) 81%, rgba(248,137,13,1) 100%)'
+    background: 'linear-gradient(180deg, rgba(46,33,77,1) 6%, rgba(102,73,98,1) 100%);'
   },
   styleSection: {
     paddingTop: theme.spacing(6),
@@ -78,8 +79,6 @@ const IndexPage = props => {
   const { edges: activity } = data.activity;
   const { edges: blogPosts } = data.blogPosts;
 
-  const darkMode = useContext(DayNightContext);
-
   return (
     <Layout>
       <section className={classes.section}>
@@ -89,7 +88,6 @@ const IndexPage = props => {
               Fraser McIntosh
             </Typography>
           </Box>
-          <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           <Box m={3}>
             <Typography variant="subtitle1" align="center" color="textSecondary">
               {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}

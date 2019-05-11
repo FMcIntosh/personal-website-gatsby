@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import NavBar from './NavBar';
+import Box from '@material-ui/core/Box';
 
 import 'typeface-merriweather';
 import 'typeface-montserrat';
@@ -25,7 +27,11 @@ const Layout = ({ children, data }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
-      <div>{children}</div>
+      <div>
+        {/* <NavBar /> */}
+        <Box mt={3} />
+        {children}
+      </div>
     </div>
   );
 };
