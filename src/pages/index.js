@@ -22,7 +22,7 @@ const styles = theme => ({
     width: '100%',
 
     //  background:'linear-gradient(180deg, rgba(46,33,77,1) 31%, rgba(144,102,115,1) 81%, rgba(248,137,13,1) 100%)'
-    background: 'linear-gradient(180deg, rgba(46,33,77,1) 6%, rgba(102,73,98,1) 100%);'
+    background: theme.palette.background.splash
   },
   styleSection: {
     paddingTop: theme.spacing(6),

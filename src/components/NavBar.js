@@ -15,7 +15,7 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles(theme => ({
   appBar: {
     flexGrow: 1,
-    background: 'rgba(46,33,77,1)',
+    background: theme.palette.background.paper,
     zIndex: 1400
   },
   menuButton: {
@@ -94,10 +94,14 @@ const NavBar = props => {
             <Hidden smDown>
               <div className={classes.menuRight}>
                 <GatsbyLink to="/projects">
-                  <Button variant="text">Projects</Button>
+                  <Button variant="text" color="primary">
+                    Projects
+                  </Button>
                 </GatsbyLink>
                 <GatsbyLink to="/blog">
-                  <Button variant="text">Blog</Button>
+                  <Button variant="text" color="primary">
+                    Blog
+                  </Button>
                 </GatsbyLink>
                 <Toggle />
               </div>

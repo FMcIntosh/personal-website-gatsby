@@ -62,7 +62,7 @@ const Toggle = ({ classes, handleChange, checked }) => {
         // }
       />
       <Box mt={-1} fontSize={14}>
-        <Typography variant="body1">{darkMode.value ? 'Night' : ' Day'}</Typography>
+        <Typography variant="body1">{darkMode.value ? 'Dusk' : ' Dawn'}</Typography>
       </Box>
     </div>
   );

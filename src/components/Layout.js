@@ -10,7 +10,7 @@ import 'typeface-montserrat';
 const Layout = ({ children, data }) => {
   return (
     <div
-      style={{ minHeight: '100vh', width: '100%', fontFamily: `'Merriweather','Georgia',serif` }}
+      style={{ minHeight: '100vh', minWidth: '100%', fontFamily: `'Merriweather','Georgia',serif` }}
     >
       <Helmet>
         <html lang="en" />
