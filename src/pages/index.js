@@ -80,7 +80,7 @@ const IndexPage = props => {
   const { edges: blogPosts } = data.blogPosts;
 
   return (
-    <div>
+    <>
       <section className={classes.section}>
         <div className={classes.layout}>
           <Box m={1}>
@@ -154,7 +154,7 @@ const IndexPage = props => {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 

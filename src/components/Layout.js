@@ -9,7 +9,9 @@ import 'typeface-montserrat';
 
 const Layout = ({ children, data }) => {
   return (
-    <div style={{ minHeight: '100vh', fontFamily: `'Merriweather','Georgia',serif` }}>
+    <div
+      style={{ minHeight: '100vh', width: '100%', fontFamily: `'Merriweather','Georgia',serif` }}
+    >
       <Helmet>
         <html lang="en" />
         <title>{data.site.siteMetadata.title}</title>
@@ -27,11 +29,9 @@ const Layout = ({ children, data }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
-      <div>
-        <NavBar />
-        <Box mt={3} />
-        {children}
-      </div>
+      <NavBar />
+      <Box mt={3} />
+      {children}
     </div>
   );
 };

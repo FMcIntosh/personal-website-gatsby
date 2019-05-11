@@ -78,7 +78,7 @@ const ProjectPage = props => {
   const darkMode = useContext(DayNightContext);
 
   return (
-    <div>
+    <>
       <section className={classes.section}>
         <div className={classes.layout}>
           <Box mb={2}>
@@ -114,7 +114,7 @@ const ProjectPage = props => {
           </Helmet>
         ) || ''} */}
       </section>
-    </div>
+    </>
   );
 };
 
