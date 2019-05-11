@@ -28,7 +28,7 @@ const Layout = ({ children, data }) => {
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
       <div>
-        {/* <NavBar /> */}
+        <NavBar />
         <Box mt={3} />
         {children}
       </div>

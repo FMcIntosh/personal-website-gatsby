@@ -66,7 +66,7 @@ const IndexPage = props => {
   const darkMode = useContext(DayNightContext);
 
   return (
-    <Layout>
+    <div>
       <section className={classes.section}>
         <div className={classes.layout}>
           <Typography variant="h2" component="h1" align="center" className={classes.title}>
@@ -95,7 +95,7 @@ const IndexPage = props => {
           </div>
         </div>
       </footer>
-    </Layout>
+    </div>
   );
 };
 
