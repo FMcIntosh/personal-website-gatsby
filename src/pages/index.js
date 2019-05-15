@@ -51,8 +51,9 @@ const styles = theme => ({
     }
   },
   footer: {
-    backgroundColor: theme.palette.background.secondaryAccent,
-    padding: `${theme.spacing(6)}px 0`
+    backgroundColor: theme.palette.background.footer,
+    padding: `${theme.spacing(6)}px 0`,
+    color: theme.palette.background.plain
   },
   avatar: {
     margin: theme.spacing(2),
@@ -60,8 +61,13 @@ const styles = theme => ({
     height: 80
   },
   sectionTitle: {
-    fontSize: 22,
+    fontSize: 26,
     marginBottom: theme.spacing(3)
+  },
+  plainSectionTitle: {
+    fontSize: 26,
+    marginBottom: theme.spacing(3),
+    color: theme.palette.background.plain
   },
   title: {
     fontWeight: 800,
@@ -104,7 +110,7 @@ const IndexPage = props => {
       <section className={classes.styleSection}>
         <div className={classes.layout}>
           {/* <Paper style={{ padding: 20 }}> */}
-          <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
+          <Typography variant="h2" gutterBottom className={classes.plainSectionTitle}>
             Recent Projects
           </Typography>
           <ProjectSection projects={projects} />

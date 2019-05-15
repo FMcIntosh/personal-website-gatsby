@@ -16,16 +16,21 @@ export const DayNightProvider = ({ children }) => {
         splash: 'linear-gradient(180deg, rgba(46,33,77,1) 8%, rgba(102,73,98,1) 100%)',
         default: '#0a0025',
         primaryAccent: '#0a0025',
-        secondaryAccent: '#341639'
+        footer: '#2E214D',
+        plain: '#FFF'
       }
     : {
         // rgba(157,211,247,1)
         // rgba(82,192,227,1)
-        paper: 'rgba(96,145,212,1)',
-        splash: 'linear-gradient(180deg, rgba(96,145,212,1) 8%,  rgba(251,201,197,1) 100%)',
+        // rgba(96,145,212,1)
+        //rgba(59,118,196,1) level up blue
+        // rgba(47,92,152,1) prussian
+        paper: 'rgba(59,118,196,1)',
+        splash: 'linear-gradient(180deg, rgba(59,118,196,1) 8%,  rgba(251,201,197,1) 100%)',
         default: 'rgb(252, 250, 255)',
         primaryAccent: 'rgb(252, 250, 255)',
-        secondaryAccent: 'rgb(253, 250, 250)'
+        footer: 'rgb(253, 250, 250)',
+        plain: '#1E2A5C'
       };
 
   const theme = createMuiTheme({
@@ -41,7 +46,7 @@ export const DayNightProvider = ({ children }) => {
         // background: rgb(46,33,77);
         // background: linear-gradient(180deg, rgba(46,33,77,1) 31%, rgba(144,102,115,1) 81%, rgba(248,137,13,1) 100%);
       },
-      secondary: { main: darkMode.value ? '#F8890D' : '#D98594' },
+      secondary: { main: darkMode.value ? '#F8890D' : '#FFB1AC' },
       background
     },
     status: {
