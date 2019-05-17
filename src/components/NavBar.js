@@ -11,6 +11,7 @@ import GatsbyLink from '../components/GatsbyLink';
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
+import { useSpring, animated } from 'react-spring';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -83,14 +84,18 @@ function HideOnScroll(props) {
 const NavBar = props => {
   const classes = useStyles();
   const [isMenuOpen, setMenuIsOpen] = useState(false);
+  const trigger = useScrollTrigger({ disableHysteresis: true, threshold: 100 });
+  const fade = useSpring({ opacity: trigger ? 1 : 0 });
   return (
     <>
       <HideOnScroll forceFlat={isMenuOpen}>
         <AppBar className={classes.appBar}>
           <Toolbar variant="dense" className={classes.toolbar}>
-            <GatsbyLink to="/">
-              <Typography variant="h6">Fraser McIntosh</Typography>
-            </GatsbyLink>
+            <animated.div style={fade}>
+              <GatsbyLink to="/">
+                <Typography variant="h6">Fraser McIntosh</Typography>
+              </GatsbyLink>
+            </animated.div>
             <Hidden smDown>
               <div className={classes.menuRight}>
                 <GatsbyLink to="/projects">
