@@ -51,7 +51,7 @@ const styles = theme => ({
     }
   },
   footer: {
-    backgroundColor: theme.palette.background.footer,
+    backgroundColor: theme.palette.primary.dark,
     padding: `${theme.spacing(6)}px 0`,
     color: theme.palette.background.plain
   },
@@ -66,8 +66,7 @@ const styles = theme => ({
   },
   plainSectionTitle: {
     fontSize: 26,
-    marginBottom: theme.spacing(3),
-    color: theme.palette.background.plain
+    marginBottom: theme.spacing(3)
   },
   title: {
     fontWeight: 800,
@@ -94,7 +93,7 @@ const IndexPage = props => {
               Fraser McIntosh
             </Typography>
           </Box>
-          <Box m={3}>
+          <Box mt={3} mb={28}>
             <Typography variant="subtitle1" align="center" color="textSecondary">
               {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
             </Typography>
@@ -102,12 +101,12 @@ const IndexPage = props => {
           {/* <Avatar className={classes.avatar}>
           <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
         </Avatar> */}
-          <Box m={4}>
+          {/* <Box m={4}>
             <ActivityFeed activityItems={activity} />
-          </Box>
+          </Box> */}
         </div>
       </section>
-      <section className={classes.styleSection}>
+      <section className={classes.section}>
         <div className={classes.layout}>
           {/* <Paper style={{ padding: 20 }}> */}
           <Typography variant="h2" gutterBottom className={classes.plainSectionTitle}>
@@ -127,9 +126,8 @@ const IndexPage = props => {
           {/* </Paper> */}
         </div>
       </section>
-      <section className={classes.section}>
+      {/* <section className={classes.section}>
         <div className={classes.layout}>
-          {/* <Paper style={{ padding: 20 }}> */}
           <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
             From the blog
           </Typography>
@@ -144,9 +142,8 @@ const IndexPage = props => {
               All posts
             </Button>
           </GatsbyLink>
-          {/* </Paper> */}
         </div>
-      </section>
+      </section> */}
       <footer className={classes.footer}>
         <div className={classes.layout}>
           <div>

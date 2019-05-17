@@ -38,7 +38,9 @@ export const DayNightProvider = ({ children }) => {
       type: darkMode.value ? 'dark' : 'dark',
       primary: {
         // main: 'rgb(210, 54, 105)',
-        main: '#5653ad'
+        main: darkMode.value ? 'rgba(46,33,77,1)' : 'rgba(59,118,196,1) '
+        // '#5653ad' purple
+        //#bbaeff purple light
         //2E214D
         // main: '#4F3250'
         // A8497D

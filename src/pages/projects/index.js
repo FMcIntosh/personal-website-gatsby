@@ -13,7 +13,6 @@ import ActivityFeed from '../../components/ActivityFeed/ActivityFeed';
 import BlogSection from '../../components/BlogSection';
 import Layout from '../../components/Layout';
 import ProjectSection from '../../components/ProjectSection';
-import Toggle from '../../components/Toggle';
 import Box from '@material-ui/core/Box';
 
 const styles = theme => ({
@@ -21,7 +20,7 @@ const styles = theme => ({
     paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
     width: '100%',
-    background: theme.palette.background.paper
+    background: theme.palette.background.splash
   },
   styleSection: {
     paddingTop: theme.spacing(6),
@@ -50,7 +49,7 @@ const styles = theme => ({
     }
   },
   footer: {
-    backgroundColor: theme.palette.background.secondaryAccent,
+    backgroundColor: theme.palette.primary.dark,
     padding: `${theme.spacing(6)}px 0`
   },
   title: {
@@ -63,7 +62,6 @@ const styles = theme => ({
 const IndexPage = props => {
   const { data, classes } = props;
   const { edges: projects } = data.projects;
-  const darkMode = useContext(DayNightContext);
 
   return (
     <div>
@@ -72,7 +70,6 @@ const IndexPage = props => {
           <Typography variant="h2" component="h1" align="center" className={classes.title}>
             Projects
           </Typography>
-          <Toggle checked={darkMode.value} handleChange={darkMode.toggle} />
           <Box mt={4}>
             <ProjectSection projects={projects} />
           </Box>
