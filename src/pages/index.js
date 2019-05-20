@@ -14,23 +14,26 @@ import Layout from '../components/Layout';
 import ProjectSection from '../components/ProjectSection';
 import Box from '@material-ui/core/Box';
 import NavBar from '../components/NavBar';
+import Toggle from '../components/Toggle';
 
 const styles = theme => ({
   section: {
     paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
     width: '100%',
+    minHeight: '100vh',
 
     //  background:'linear-gradient(180deg, rgba(46,33,77,1) 31%, rgba(144,102,115,1) 81%, rgba(248,137,13,1) 100%)'
     background: theme.palette.background.splash
   },
-  styleSection: {
+  titleSection: {
     paddingTop: theme.spacing(6),
     paddingBottom: theme.spacing(8),
     width: '100%',
-    background: theme.palette.background.primaryAccent,
-    borderTop: `1px solid ${theme.palette.divider}`,
-    borderBottom: `1px solid ${theme.palette.divider}`
+    height: '80vh',
+
+    //  background:'linear-gradient(180deg, rgba(46,33,77,1) 31%, rgba(144,102,115,1) 81%, rgba(248,137,13,1) 100%)'
+    background: theme.palette.background.splash
   },
   layout: {
     display: 'flex',
@@ -51,7 +54,7 @@ const styles = theme => ({
     }
   },
   footer: {
-    backgroundColor: theme.palette.primary.dark,
+    // backgroundColor: theme.palette.primary.dark,
     padding: `${theme.spacing(6)}px 0`,
     color: theme.palette.background.plain
   },
@@ -75,6 +78,9 @@ const styles = theme => ({
   },
   sectionAction: {
     marginTop: theme.spacing(4)
+  },
+  iconButton: {
+    width: 48
   }
 });
 
@@ -88,75 +94,50 @@ const IndexPage = props => {
     <>
       <section className={classes.section}>
         <div className={classes.layout}>
-          <Box m={1}>
+          <Box m={1} position="relative" width="100%">
             <Typography variant="h2" component="h1" align="center" className={classes.title}>
               Fraser McIntosh
             </Typography>
+            <Box position="absolute" top={0} right={0}>
+              <Toggle />
+            </Box>
           </Box>
-          <Box mt={3} mb={28}>
+          <Box mt={3} mb={10}>
             <Typography variant="subtitle1" align="center" color="textSecondary">
               {"I'm a web developer living in Auckland, New Zealand. Thanks for stopping by!"}
             </Typography>
           </Box>
-          {/* <Avatar className={classes.avatar}>
-          <ProjectImage imageInfo={projects[0].node.frontmatter.image} />
-        </Avatar> */}
-          {/* <Box m={4}>
-            <ActivityFeed activityItems={activity} />
-          </Box> */}
         </div>
-      </section>
-      <section className={classes.section}>
         <div className={classes.layout}>
-          {/* <Paper style={{ padding: 20 }}> */}
-          <Typography variant="h2" gutterBottom className={classes.plainSectionTitle}>
+          {/* <Typography variant="h2" gutterBottom className={classes.plainSectionTitle}>
             Recent Projects
-          </Typography>
+          </Typography> */}
           <ProjectSection projects={projects} />
-          <GatsbyLink to="/projects">
+          {/* <GatsbyLink to="/projects">
             <Button
               variant="contained"
               size="small"
               color="primary"
               className={classes.sectionAction}
             >
-              See more projects
+              Projects
             </Button>
-          </GatsbyLink>
-          {/* </Paper> */}
+          </GatsbyLink> */}
         </div>
-      </section>
-      {/* <section className={classes.section}>
-        <div className={classes.layout}>
-          <Typography variant="h2" gutterBottom className={classes.sectionTitle}>
-            From the blog
-          </Typography>
-          <BlogSection blogPosts={blogPosts} />
-          <GatsbyLink to="/blog">
-            <Button
-              variant="contained"
-              size="small"
-              color="primary"
-              className={classes.sectionAction}
-            >
-              All posts
-            </Button>
-          </GatsbyLink>
-        </div>
-      </section> */}
-      <footer className={classes.footer}>
-        <div className={classes.layout}>
-          <div>
-            <IconButton>
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </IconButton>
+        <footer className={classes.footer}>
+          <div className={classes.layout}>
+            <div>
+              <IconButton className={classes.iconButton}>
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </IconButton>
 
-            <IconButton>
-              <FontAwesomeIcon icon={faGithub} />
-            </IconButton>
+              <IconButton>
+                <FontAwesomeIcon icon={faGithub} />
+              </IconButton>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </section>
     </>
   );
 };

@@ -90,33 +90,28 @@ const NavBar = props => {
     <>
       <HideOnScroll forceFlat={isMenuOpen}>
         <AppBar className={classes.appBar}>
-          <Toolbar variant="dense" className={classes.toolbar}>
-            <animated.div style={fade}>
+          <animated.div style={fade}>
+            <Toolbar variant="dense" className={classes.toolbar}>
               <GatsbyLink to="/">
                 <Typography variant="h6">Fraser McIntosh</Typography>
               </GatsbyLink>
-            </animated.div>
-            <Hidden smDown>
-              <div className={classes.menuRight}>
-                <GatsbyLink to="/projects">
-                  <Button variant="text" color="primary">
-                    Projects
-                  </Button>
-                </GatsbyLink>
-                <GatsbyLink to="/blog">
-                  <Button variant="text" color="primary">
-                    Blog
-                  </Button>
-                </GatsbyLink>
-                <Toggle />
-              </div>
-            </Hidden>
-            <Hidden mdUp>
-              <Button variant="text" onClick={() => setMenuIsOpen(state => !state)}>
-                {isMenuOpen ? 'Close Menu' : 'Menu'}
-              </Button>
-            </Hidden>
-          </Toolbar>
+              <Hidden smDown>
+                <div className={classes.menuRight}>
+                  {/* <GatsbyLink to="/projects">
+                    <Button variant="text" color="secondary">
+                      Projects
+                    </Button>
+                  </GatsbyLink> */}
+                  <Toggle />
+                </div>
+              </Hidden>
+              <Hidden mdUp>
+                <Button variant="text" onClick={() => setMenuIsOpen(state => !state)}>
+                  {isMenuOpen ? 'Close Menu' : 'Menu'}
+                </Button>
+              </Hidden>
+            </Toolbar>
+          </animated.div>
         </AppBar>
       </HideOnScroll>
 
